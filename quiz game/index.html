@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adobe BDR Knowledge Quiz</title>
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --red:        #FA0F00;
+            --red-dark:   #D40D00;
+            --red-bg:     #FFF2F1;
+            --dark:       #1A1A1A;
+            --mid:        #2C2C2C;
+            --gray:       #6E6E6E;
+            --light:      #F4F4F4;
+            --border:     #E1E1E1;
+            --white:      #FFFFFF;
+            --green:      #12B76A;
+            --green-bg:   #ECFDF3;
+            --yellow:     #F59E0B;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: #EBEBEB;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 28px 16px 64px;
+        }
+
+        /* ── Layout ── */
+        .wrap { width: 100%; max-width: 640px; }
+
+        .logo-bar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .logo-a {
+            width: 42px; height: 42px;
+            background: var(--red);
+            border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            color: #fff;
+            font-size: 24px; font-weight: 900;
+            letter-spacing: -2px;
+            flex-shrink: 0;
+            box-shadow: 0 2px 8px rgba(250,15,0,0.35);
+        }
+
+        .logo-label { line-height: 1.3; }
+        .logo-label strong { font-size: 15px; font-weight: 700; color: var(--dark); }
+        .logo-label span {
+            display: block; font-size: 11px; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.7px; color: var(--gray);
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 18px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.07), 0 6px 24px rgba(0,0,0,0.08);
+            padding: 32px;
+        }
+
+        @media (max-width: 480px) {
+            .card { padding: 24px 18px; border-radius: 14px; }
+        }
+
+        .screen { display: none; }
+        .screen.active { display: block; }
+
+        /* ── Buttons ── */
+        .btn {
+            display: block; width: 100%;
+            padding: 14px 20px;
+            border-radius: 11px; border: none;
+            font-size: 15px; font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.1s, background 0.15s, opacity 0.2s;
+            font-family: inherit;
+        }
+        .btn:active { transform: scale(0.98); }
+
+        .btn-primary { background: var(--red); color: #fff; }
+        .btn-primary:hover { background: var(--red-dark); }
+
+        .btn-secondary {
+            background: var(--light); color: var(--dark);
+            border: 1.5px solid var(--border);
+        }
+        .btn-secondary:hover { background: var(--border); }
+
+        .btn-ghost {
+            background: transparent; color: var(--red);
+            border: 1.5px solid var(--red);
+            font-size: 13px; padding: 7px 14px;
+            width: auto; display: inline-flex; align-items: center; gap: 5px;
+        }
+        .btn-ghost:hover { background: var(--red-bg); }
+
+        /* ── Welcome Screen ── */
+        .welcome-hero { text-align: center; margin-bottom: 28px; }
+        .welcome-hero h1 {
+            font-size: 27px; font-weight: 800; color: var(--dark);
+            line-height: 1.25; margin-bottom: 8px;
+        }
+        .welcome-hero h1 em { font-style: normal; color: var(--red); }
+        .welcome-hero p { color: var(--gray); font-size: 14px; }
+
+        .stats-row {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 10px; margin-bottom: 26px;
+        }
+        .stat-box {
+            background: var(--light); border-radius: 11px;
+            padding: 14px 10px; text-align: center;
+        }
+        .stat-box .num { font-size: 22px; font-weight: 800; color: var(--dark); }
+        .stat-box .lbl {
+            font-size: 10px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.6px; color: var(--gray); margin-top: 3px;
+        }
+
+        .form-group { margin-bottom: 18px; }
+        .form-label { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 7px; }
+        .form-input {
+            width: 100%; padding: 12px 16px;
+            border: 1.5px solid var(--border); border-radius: 10px;
+            font-size: 15px; color: var(--dark); outline: none;
+            transition: border-color 0.2s; background: var(--white);
+            font-family: inherit;
+        }
+        .form-input:focus { border-color: var(--red); }
+        .form-input.error { border-color: var(--red); animation: shake 0.3s; }
+
+        @keyframes shake {
+            0%,100%{transform:translateX(0)}
+            25%{transform:translateX(-6px)}
+            75%{transform:translateX(6px)}
+        }
+
+        /* ── Leaderboard ── */
+        .lb-section { margin-top: 28px; }
+        .section-head {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 12px;
+        }
+        .section-title {
+            font-size: 12px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.8px; color: var(--gray);
+        }
+        .lb-empty {
+            text-align: center; color: var(--gray); font-size: 14px;
+            padding: 22px; background: var(--light); border-radius: 10px;
+        }
+        .lb-list { display: flex; flex-direction: column; gap: 7px; }
+        .lb-row {
+            display: flex; align-items: center; gap: 10px;
+            padding: 10px 14px; background: var(--light); border-radius: 10px;
+        }
+        .lb-row.r1 { background: #FFF9E6; }
+        .lb-row.r2 { background: #F6F6F6; }
+        .lb-row.r3 { background: #FFF2EC; }
+        .lb-rank { font-size: 13px; font-weight: 700; color: var(--gray); width: 24px; text-align: center; flex-shrink: 0; }
+        .lb-rank.medal { font-size: 17px; }
+        .lb-name { flex: 1; font-weight: 600; font-size: 14px; color: var(--dark); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+        .lb-pct { font-size: 14px; font-weight: 800; color: var(--dark); margin-right: 4px; }
+        .lb-badge {
+            font-size: 10px; font-weight: 800; padding: 3px 8px;
+            border-radius: 20px; letter-spacing: 0.3px;
+        }
+        .lb-badge.pass { background: var(--green-bg); color: #0A9055; }
+        .lb-badge.fail { background: var(--red-bg); color: #C0392B; }
+
+        /* ── Quiz Screen ── */
+        .quiz-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 18px;
+        }
+        .cat-badge {
+            font-size: 11px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.5px; padding: 5px 12px;
+            border-radius: 20px; background: var(--light); color: var(--gray);
+        }
+        .cat-badge.aem-sites     { background: #FFF0F0; color: #C41200; }
+        .cat-badge.aem-assets    { background: #F0F4FF; color: #1D4ED8; }
+        .cat-badge.aep-data      { background: #FFF8EC; color: #B45309; }
+        .cat-badge.ajo-marketo   { background: #F0FFF4; color: #0A7040; }
+
+        .q-progress { font-size: 13px; color: var(--gray); font-weight: 500; }
+
+        .timer-row { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; }
+        .timer-track {
+            flex: 1; height: 5px; background: var(--border);
+            border-radius: 3px; overflow: hidden;
+        }
+        .timer-fill {
+            height: 100%; border-radius: 3px;
+            background: var(--red); transition: width 1s linear;
+        }
+        .timer-fill.warn   { background: var(--yellow); }
+        .timer-fill.urgent { background: var(--red); animation: pulse-bar 0.5s infinite alternate; }
+        @keyframes pulse-bar { to { opacity: 0.5; } }
+
+        .timer-num { font-size: 14px; font-weight: 700; min-width: 26px; text-align: right; color: var(--dark); }
+        .timer-num.warn   { color: var(--yellow); }
+        .timer-num.urgent { color: var(--red); }
+
+        .q-text {
+            font-size: 19px; font-weight: 600; color: var(--dark);
+            line-height: 1.55; margin-bottom: 22px;
+        }
+
+        .options { display: flex; flex-direction: column; gap: 9px; }
+        .opt-btn {
+            width: 100%; text-align: left;
+            padding: 14px 18px; border-radius: 12px;
+            border: 1.5px solid var(--border);
+            background: var(--light);
+            font-size: 14px; color: var(--dark);
+            cursor: pointer; transition: all 0.15s;
+            font-family: inherit;
+            display: flex; align-items: center; gap: 12px;
+        }
+        .opt-btn:hover:not(:disabled) { border-color: var(--red); background: var(--red-bg); }
+        .opt-letter {
+            display: flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; border-radius: 50%;
+            background: var(--border); font-size: 12px; font-weight: 700;
+            flex-shrink: 0; transition: all 0.15s;
+        }
+        .opt-btn.correct { background: var(--green-bg); border-color: var(--green); }
+        .opt-btn.correct .opt-letter { background: var(--green); color: #fff; }
+        .opt-btn.wrong   { background: var(--red-bg); border-color: var(--red); }
+        .opt-btn.wrong   .opt-letter { background: var(--red); color: #fff; }
+        .opt-btn:disabled { cursor: default; }
+
+        .feedback {
+            display: none; align-items: flex-start; gap: 10px;
+            padding: 12px 16px; border-radius: 10px;
+            font-size: 13.5px; font-weight: 500;
+            margin-top: 14px; line-height: 1.5;
+        }
+        .feedback.show    { display: flex; }
+        .feedback.correct { background: var(--green-bg); color: #0A7040; }
+        .feedback.wrong   { background: var(--red-bg);   color: #8B1A10; }
+        .feedback-icon { font-size: 17px; flex-shrink: 0; margin-top: 1px; }
+
+        .next-wrap { margin-top: 18px; display: none; }
+
+        /* ── Results Screen ── */
+        .result-hero { text-align: center; padding: 20px 0 24px; }
+        .result-emoji   { font-size: 52px; margin-bottom: 10px; }
+        .result-verdict {
+            font-size: 36px; font-weight: 900; letter-spacing: 1px;
+            margin-bottom: 6px;
+        }
+        .result-verdict.pass { color: var(--green); }
+        .result-verdict.fail { color: var(--red); }
+        .result-sub  { font-size: 16px; color: var(--gray); margin-bottom: 4px; }
+        .result-hint { font-size: 13px; color: #AAAAAA; }
+
+        .divider { height: 1px; background: var(--border); margin: 22px 0; }
+
+        .breakdown-title {
+            font-size: 12px; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 0.8px; color: var(--gray); margin-bottom: 14px;
+        }
+        .breakdown-list { display: flex; flex-direction: column; gap: 13px; margin-bottom: 6px; }
+        .bd-row  { display: flex; flex-direction: column; gap: 5px; }
+        .bd-meta { display: flex; justify-content: space-between; font-size: 13px; }
+        .bd-cat  { font-weight: 600; color: var(--dark); }
+        .bd-score { color: var(--gray); }
+        .bd-track { height: 5px; background: var(--border); border-radius: 3px; overflow: hidden; }
+        .bd-fill  { height: 100%; border-radius: 3px; background: var(--red); }
+        .bd-fill.good  { background: var(--yellow); }
+        .bd-fill.great { background: var(--green); }
+
+        .action-stack { display: flex; flex-direction: column; gap: 10px; }
+
+        /* ── Fade-in on screen transition ── */
+        .screen.active { animation: fadeUp 0.28s ease both; }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(10px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+<div class="wrap">
+
+    <!-- Logo bar -->
+    <div class="logo-bar">
+        <div class="logo-a">A</div>
+        <div class="logo-label">
+            <strong>Adobe BDR Knowledge Quiz</strong>
+            <span>Product Certification &nbsp;·&nbsp; Sales Enablement</span>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════ WELCOME SCREEN ═══════════════════════════════ -->
+    <div id="screen-welcome" class="screen card active">
+
+        <div class="welcome-hero">
+            <h1>Test Your <em>Adobe</em> Product Knowledge</h1>
+            <p>40 questions in pool &nbsp;·&nbsp; 10 per quiz &nbsp;·&nbsp; 70% to pass</p>
+        </div>
+
+        <div class="stats-row">
+            <div class="stat-box">
+                <div class="num" id="stat-players">0</div>
+                <div class="lbl">Players</div>
+            </div>
+            <div class="stat-box">
+                <div class="num" id="stat-avg">—</div>
+                <div class="lbl">Avg Score</div>
+            </div>
+            <div class="stat-box">
+                <div class="num" id="stat-passes">0</div>
+                <div class="lbl">Passes</div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="form-label" for="player-name">Your Name</label>
+            <input type="text" id="player-name" class="form-input"
+                   placeholder="Enter your name to begin" maxlength="40" autocomplete="off" />
+        </div>
+        <button class="btn btn-primary" onclick="startQuiz()">Start Quiz &rarr;</button>
+
+        <div class="lb-section">
+            <div class="section-head">
+                <span class="section-title">&#127942; Leaderboard</span>
+                <button class="btn btn-ghost" onclick="resetLeaderboard()">&#8635; Reset</button>
+            </div>
+            <div id="lb-welcome"></div>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════ QUIZ SCREEN ═══════════════════════════════ -->
+    <div id="screen-quiz" class="screen card">
+        <div class="quiz-header">
+            <span class="cat-badge" id="q-cat">—</span>
+            <span class="q-progress" id="q-progress">1 / 10</span>
+        </div>
+
+        <div class="timer-row">
+            <div class="timer-track">
+                <div class="timer-fill" id="timer-fill" style="width:100%"></div>
+            </div>
+            <div class="timer-num" id="timer-num">30</div>
+        </div>
+
+        <div class="q-text" id="q-text">Loading&hellip;</div>
+
+        <div class="options" id="q-options"></div>
+
+        <div class="feedback" id="feedback">
+            <span class="feedback-icon" id="fb-icon"></span>
+            <span id="fb-text"></span>
+        </div>
+
+        <div class="next-wrap" id="next-wrap">
+            <button class="btn btn-primary" onclick="nextQuestion()">Next Question &rarr;</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════ RESULTS SCREEN ═══════════════════════════════ -->
+    <div id="screen-results" class="screen card">
+        <div class="result-hero">
+            <div class="result-emoji"  id="r-emoji"></div>
+            <div class="result-verdict" id="r-verdict"></div>
+            <div class="result-sub"    id="r-sub"></div>
+            <div class="result-hint"   id="r-hint"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="breakdown-title">Category Breakdown</div>
+        <div class="breakdown-list" id="breakdown"></div>
+
+        <div class="divider"></div>
+
+        <div class="lb-section">
+            <div class="section-head">
+                <span class="section-title">&#127942; Leaderboard</span>
+            </div>
+            <div id="lb-results"></div>
+        </div>
+
+        <div class="divider"></div>
+
+        <div class="action-stack">
+            <button class="btn btn-primary"   onclick="restartQuiz()">Play Again</button>
+            <button class="btn btn-secondary" onclick="goHome()">&larr; Back to Home</button>
+        </div>
+    </div>
+
+</div><!-- /.wrap -->
+
+<script>
+// ════════════════════════════════════════════════════════════════════════════════
+//  QUESTION BANK — 40 questions across 4 sections
+//  Add or edit questions here. Each entry:
+//  {
+//    question:      string,
+//    options:       [string, string, string, string],   // exactly 4 choices
+//    correctAnswer: number,                             // 0-based index (all are 1 = option B)
+//    category:      "AEM Sites" | "AEM Assets" | "AEP & Data" | "AJO / Marketo / Workfront"
+//  }
+// ════════════════════════════════════════════════════════════════════════════════
+const QUESTION_BANK = [
+
+    // ── SECTION 1: AEM Sites ──────────────────────────────────────────────────
+    {
+        question: "What is AEM Sites primarily used for?",
+        options: [
+            "Managing customer data and building audience profiles",
+            "Creating, managing, and publishing web content across channels without relying on IT",
+            "Sending automated email campaigns to leads",
+            "Managing digital ad spend across social platforms"
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    {
+        question: "A prospect says: 'Every time we need to update our website, we have to wait 2 weeks for IT.' Which AEM Sites feature directly solves this?",
+        options: [
+            "Dynamic Media for auto-cropping images",
+            "The WYSIWYG drag-and-drop authoring interface that empowers non-technical marketers",
+            "Adobe Analytics integration for traffic reporting",
+            "AEM Cloud Manager for DevOps pipelines"
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    {
+        question: "What is 'headless CMS' in the context of AEM Sites?",
+        options: [
+            "A version of AEM with no user interface",
+            "A deployment model where content is managed in AEM but delivered via API to any frontend (web, mobile app, digital signage, IoT)",
+            "AEM running without a cloud connection",
+            "A feature that removes page templates to speed up load time"
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    {
+        question: "What is Edge Delivery Services (EDS) and why is it a competitive differentiator?",
+        options: [
+            "A CDN sold separately from AEM for video streaming",
+            "A next-gen AEM capability combining document-based authoring (Google Docs/SharePoint) with near-instant page load speeds — scoring 100 on Google Lighthouse",
+            "An email delivery engine built into AEM",
+            "A feature exclusively for AEM on-premise installations"
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    {
+        question: "A customer manages 30 regional websites in different languages. Which AEM Sites capability helps them manage this efficiently?",
+        options: [
+            "Adobe Target A/B testing",
+            "Live Copy and Multi-Site Manager (MSM) — push master content changes to all regional sites automatically while allowing local variations",
+            "Adobe Campaign email segmentation",
+            "AEM Forms for digital document collection"
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    {
+        question: "What are 'Experience Fragments' in AEM Sites?",
+        options: [
+            "Error logs generated when a page fails to load",
+            "Reusable chunks of content and design (e.g., a hero banner, a CTA block) that can be placed on multiple pages or exported to other channels like email",
+            "A type of Adobe Analytics segment",
+            "Code snippets used by developers in AEM backend"
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    {
+        question: "What are the two main deployment options for AEM Sites today?",
+        options: [
+            "SaaS-only — AEM does not support on-premise installations",
+            "On-premise (AEM 6.5 LTS for legacy customers) and AEM as a Cloud Service (AEMaaCS) — the preferred modern path with auto-scaling and always-current updates",
+            "AWS Marketplace and Azure Marketplace only",
+            "Adobe manages all infrastructure; customers have no deployment choice"
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    {
+        question: "How does AEM Sites integrate with Adobe Target?",
+        options: [
+            "Target replaces AEM Sites for personalized pages",
+            "AEM delivers the content; Target determines which version of that content each visitor sees based on behavioral data — enabling in-page A/B testing and personalization without re-publishing",
+            "AEM Sites sends email through Target",
+            "Target is only used with Adobe Commerce, not AEM Sites"
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    {
+        question: "A Creative Cloud customer produces great brand content but struggles to distribute it consistently across their website, app, and partner portals. What is the AEM Sites pitch?",
+        options: [
+            "Recommend they hire more developers to manage each channel separately",
+            "AEM Sites bridges Creative Cloud content to digital experience — one platform to manage and publish that content to every channel at scale, with brand governance built in",
+            "Suggest they use Adobe Express for social-only distribution",
+            "AEM Sites is not suited for customers already using Creative Cloud"
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    {
+        question: "What common business problem does AEM Sites solve that competitors like WordPress or Drupal typically struggle with at enterprise scale?",
+        options: [
+            "WordPress is faster and cheaper, so AEM doesn't solve a problem WordPress can't",
+            "AEM provides enterprise-grade governance, security, personalization, omnichannel delivery, and deep Adobe ecosystem integration out-of-the-box — things that require significant custom development on open-source CMSs",
+            "AEM Sites only works for Fortune 100 companies",
+            "Drupal already provides all the same capabilities as AEM"
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+
+    // ── SECTION 2: AEM Assets ─────────────────────────────────────────────────
+    {
+        question: "What is the core job of AEM Assets?",
+        options: [
+            "A photo editing tool to replace Adobe Photoshop",
+            "A centralized Digital Asset Management (DAM) system — the single source of truth for storing, organizing, finding, and distributing all brand-approved digital assets",
+            "A scheduling tool for social media posts",
+            "A pricing tool for managing Adobe licenses"
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+    {
+        question: "A prospect says: 'Our teams use 5 different tools to store files and nobody can ever find the right version.' Which AEM Assets feature directly addresses this?",
+        options: [
+            "Adobe Firefly for AI image generation",
+            "AEM Assets as a single DAM with version control, smart search, and role-based access — so all teams find and use the latest approved asset every time",
+            "Adobe Express for quick social edits",
+            "Adobe Workfront for project tracking"
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+    {
+        question: "What does 'Smart Tags' do in AEM Assets?",
+        options: [
+            "Adds watermarks to images automatically",
+            "Uses Adobe Sensei AI to automatically analyze and tag uploaded assets with relevant keywords based on visual content and your business taxonomy — dramatically improving searchability",
+            "Tags assets with the name of the user who uploaded them",
+            "Sends tagged assets automatically to social media"
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+    {
+        question: "What is Dynamic Media in AEM Assets?",
+        options: [
+            "A social media scheduling tool",
+            "A capability that automatically delivers the right size, format, and crop of an image or video for each device and channel — from a single master asset — without creating hundreds of manual variants",
+            "A paid Adobe Stock integration",
+            "A tool for managing video subtitles only"
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+    {
+        question: "What is the difference between AEM Assets Prime and AEM Assets Ultimate?",
+        options: [
+            "Prime is on-premise only; Ultimate is cloud only",
+            "They are separate offering tiers of AEM Assets as a Cloud Service — Ultimate includes advanced capabilities like Content Hub for brand distribution and deeper AI automation on top of the core DAM",
+            "Ultimate is for video only; Prime is for images only",
+            "There is no difference — they are the same product"
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+    {
+        question: "How does AEM Assets integrate with AEM Sites?",
+        options: [
+            "They are completely separate and do not share data",
+            "Authors in AEM Sites have direct in-editor access to AEM Assets — they can search, filter, and drag assets into pages; Dynamic Media handles responsive delivery automatically",
+            "Assets must be exported as a zip before being uploaded to Sites",
+            "AEM Sites only supports assets from Adobe Stock"
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+    {
+        question: "A global brand with 500 regional marketers needs approved assets available for local campaigns without risking brand inconsistency. Which AEM Assets feature addresses this?",
+        options: [
+            "Adobe Marketo Engage for email campaigns",
+            "Content Hub — a self-service brand portal within AEM Assets where approved assets are surfaced to distributed teams with download and usage permissions controlled centrally",
+            "Adobe Express Premium for in-browser editing",
+            "AEM Forms for collecting creative briefs"
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+    {
+        question: "What role does Adobe Sensei AI play in AEM Assets?",
+        options: [
+            "Sensei powers only AEM Sites personalization, not Assets",
+            "Sensei powers Smart Tags, AI-generated metadata, color-based search, and background removal — reducing manual tagging and asset preparation time significantly",
+            "Sensei is an optional paid add-on with no connection to AEM Assets",
+            "Sensei only works with Adobe Analytics data"
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+    {
+        question: "What is a common pain point that triggers an AEM Assets conversation with a Creative Cloud prospect?",
+        options: [
+            "The customer wants to replace Adobe Creative Suite with free tools",
+            "The creative team spends hours searching for the right logo version, or brand assets get shared via email/Dropbox leading to outdated files in market",
+            "The customer already has a functioning DAM and is happy with it",
+            "The customer wants to reduce their creative headcount"
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+    {
+        question: "How does AEM Assets support e-commerce use cases?",
+        options: [
+            "AEM Assets has no integration with e-commerce platforms",
+            "AEM Assets integrates with Adobe Commerce to enrich product pages with brand-approved imagery and video — managed from the DAM and auto-delivered in the right format for each device via Dynamic Media",
+            "AEM Assets is used only for internal documentation, not customer-facing content",
+            "Assets must be manually uploaded to each product page separately"
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+
+    // ── SECTION 3: AEP & Data ─────────────────────────────────────────────────
+    {
+        question: "What is Adobe Experience Platform (AEP) in simple terms?",
+        options: [
+            "A replacement for AEM Sites with built-in page builder",
+            "The data foundation of Adobe Experience Cloud — it ingests, unifies, and standardizes customer data from all sources into real-time profiles that power personalization across every channel",
+            "A campaign email tool for marketing teams",
+            "A social media management platform"
+        ],
+        correctAnswer: 1,
+        category: "AEP & Data"
+    },
+    {
+        question: "What is the key difference between AEM and AEP?",
+        options: [
+            "AEM and AEP are the same product",
+            "AEM is the content delivery layer (create and publish experiences); AEP is the data layer (unify customer data and power real-time personalization). They work together: AEP tells AEM who the customer is; AEM delivers the right experience.",
+            "AEP is only for B2B companies; AEM is for B2C",
+            "AEM replaced AEP in 2023"
+        ],
+        correctAnswer: 1,
+        category: "AEP & Data"
+    },
+    {
+        question: "What is Adobe Real-Time CDP?",
+        options: [
+            "A content delivery network for speeding up websites",
+            "A marketer-facing application built on AEP that collects first-party data from B2C and B2B sources, unifies it into real-time customer profiles, and activates audiences across advertising, email, web, and other channels",
+            "A project management tool for campaign planning",
+            "A reporting dashboard for Adobe Analytics only"
+        ],
+        correctAnswer: 1,
+        category: "AEP & Data"
+    },
+    {
+        question: "What problem does AEP solve that older marketing clouds could not?",
+        options: [
+            "AEP provides website hosting, which older tools lacked",
+            "AEP unifies data siloed across CRM, website, mobile app, loyalty programs, and call centers into a single real-time customer profile — eliminating the fragmented view of the customer that older point solutions created",
+            "AEP replaces the need for any analytics tools",
+            "AEP is mainly a cost-reduction tool for IT teams"
+        ],
+        correctAnswer: 1,
+        category: "AEP & Data"
+    },
+    {
+        question: "What is Customer Journey Analytics (CJA)?",
+        options: [
+            "An NPS survey tool for measuring customer satisfaction",
+            "Adobe's advanced analytics solution built on AEP that lets analysts explore the full cross-channel customer journey — connecting online and offline data (web, mobile, CRM, in-store) in one analysis workspace",
+            "A replacement for Adobe Analytics in all cases",
+            "A heat-mapping tool for website UX testing"
+        ],
+        correctAnswer: 1,
+        category: "AEP & Data"
+    },
+    {
+        question: "A prospect uses Salesforce CRM, Google Analytics, and several ad platforms but says 'we can't connect the dots between all our data.' How does AEP address this?",
+        options: [
+            "AEP can only ingest Adobe-native data sources",
+            "AEP has an API-first, open architecture with pre-built connectors for Salesforce, Google, Meta, and hundreds of third-party platforms — bringing all data into one unified profile without a custom data engineering project",
+            "The customer would need to replace Salesforce with an Adobe CRM",
+            "AEP only works if the customer also purchases the full Adobe Experience Cloud"
+        ],
+        correctAnswer: 1,
+        category: "AEP & Data"
+    },
+    {
+        question: "How does AEP enable first-party data strategy — and why is this increasingly important?",
+        options: [
+            "AEP relies on third-party cookie data, which is widely available",
+            "AEP is built for first-party data — it helps brands collect, unify, and activate their own customer data as third-party cookies disappear, giving them direct relationships and consent-based personalization at scale",
+            "First-party data strategy is irrelevant to AEP's use case",
+            "AEP only processes anonymized aggregate data"
+        ],
+        correctAnswer: 1,
+        category: "AEP & Data"
+    },
+    {
+        question: "What is the relationship between AEP and Adobe Journey Optimizer (AJO)?",
+        options: [
+            "AJO and AEP are competing products",
+            "AEP provides the unified customer profiles and real-time data; AJO uses that data to orchestrate and deliver personalized messages across email, push, SMS, web, and in-app channels in real time",
+            "AJO only works with Marketo data, not AEP",
+            "AJO replaces AEP for journey management"
+        ],
+        correctAnswer: 1,
+        category: "AEP & Data"
+    },
+    {
+        question: "Which of the following best describes how Verizon might use AEP?",
+        options: [
+            "Verizon uses AEP only for managing their website content",
+            "Verizon uses AEP to unify data from mobile apps, retail stores, online accounts, and call centers — creating one real-time customer profile that drives personalized offers across every touchpoint",
+            "Verizon uses AEP as a replacement for their CRM system",
+            "Verizon uses AEP only for paid advertising data"
+        ],
+        correctAnswer: 1,
+        category: "AEP & Data"
+    },
+    {
+        question: "In your Greenfield BDR territory, a prospect is a Creative Cloud customer that sells products online. How would you connect AEP to their business?",
+        options: [
+            "AEP is irrelevant to e-commerce companies",
+            "AEP can unify their e-commerce behavior (browsing, cart abandonment, purchase history) with CRM and email data to build real-time customer profiles — enabling personalized product recommendations, abandoned cart recovery, and loyalty campaigns",
+            "Tell them to switch from their current e-commerce platform to Adobe Commerce before considering AEP",
+            "AEP only serves enterprise Fortune 100 companies"
+        ],
+        correctAnswer: 1,
+        category: "AEP & Data"
+    },
+
+    // ── SECTION 4: AJO / Marketo / Workfront ─────────────────────────────────
+    {
+        question: "What is Adobe Journey Optimizer (AJO) used for?",
+        options: [
+            "Managing digital asset libraries",
+            "Orchestrating real-time, personalized customer journeys — delivering the right message across email, SMS, push notifications, web, and in-app channels, triggered by live customer behavior from AEP",
+            "Building and hosting websites",
+            "Managing employee workflows and approvals"
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    {
+        question: "What is the difference between Adobe Journey Optimizer and Marketo Engage?",
+        options: [
+            "They are the same tool with different names",
+            "AJO is built for B2C real-time, event-triggered cross-channel journeys; Marketo Engage is purpose-built for B2B demand generation, lead nurturing, and account-based marketing",
+            "Marketo is for enterprise only; AJO is for small business",
+            "AJO handles social media; Marketo handles only email"
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    {
+        question: "What is Marketo Engage's primary strength?",
+        options: [
+            "Building responsive websites for B2B companies",
+            "B2B marketing automation — lead nurturing, email campaigns, lead scoring, CRM sync, and account-based marketing (ABM) to align marketing and sales on target accounts",
+            "Managing digital assets for marketing teams",
+            "Real-time B2C personalization on e-commerce sites"
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    {
+        question: "What is Journey Optimizer B2B Edition?",
+        options: [
+            "A cheaper version of AJO with fewer features",
+            "A solution for B2B marketing and sales teams to engage buying groups within target accounts using AI-powered content and personalized journeys — combining Marketo's lead data with account-level orchestration",
+            "A customer service chatbot tool",
+            "An analytics add-on for Marketo Engage"
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    {
+        question: "What is Adobe Workfront used for?",
+        options: [
+            "Managing customer data in real-time profiles",
+            "Enterprise work management — organizing tasks, timelines, approvals, and creative briefs so marketing and creative teams can plan, execute, and review campaigns efficiently without chaos",
+            "Building and publishing web pages",
+            "Analyzing website traffic and user behavior"
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    {
+        question: "How does Workfront connect to AEM and Creative Cloud to create a 'content supply chain'?",
+        options: [
+            "Workfront only works with Microsoft Office tools",
+            "Workfront manages the brief and approval workflow; Creative Cloud is used for asset creation; AEM is the destination for published assets and pages — together they eliminate the manual handoffs that slow down content production",
+            "Workfront replaces AEM for content publishing",
+            "The three products do not integrate with each other"
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    {
+        question: "A prospect's campaign team says they lose hours every week tracking approvals via email and Slack. Which Adobe product is the right fit?",
+        options: [
+            "Adobe Analytics — to measure approval efficiency",
+            "Adobe Workfront — its structured review-and-approval workflows replace ad-hoc email/Slack coordination with automated routing, version tracking, and deadline management",
+            "Adobe Target — for A/B testing approval processes",
+            "AEM Forms — for digital form collection"
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    {
+        question: "In what scenario would you recommend Adobe Journey Optimizer over Marketo Engage?",
+        options: [
+            "A B2B SaaS company nurturing enterprise leads over a 6-month sales cycle",
+            "A retail bank wanting to send a personalized push notification to a mobile app user seconds after they check their balance — triggered by real-time behavior",
+            "A company wanting to run an ABM program targeting Fortune 500 accounts",
+            "A company building their first email newsletter list"
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    {
+        question: "What is 'GenStudio' in the Adobe Digital Experience portfolio?",
+        options: [
+            "A new version of Adobe Photoshop for enterprise teams",
+            "Adobe's AI-powered content creation and activation platform — enabling marketing teams to generate on-brand content at scale using generative AI, then activate it across campaigns via Journey Optimizer and other channels",
+            "A project management tool for video production studios",
+            "An analytics product for creative performance measurement only"
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    {
+        question: "A prospect currently uses HubSpot for marketing automation and is growing quickly. What is the best argument for Marketo Engage?",
+        options: [
+            "Marketo is cheaper than HubSpot at all tiers",
+            "Marketo Engage is built for enterprise B2B complexity — deeper CRM integration, more sophisticated lead scoring, ABM capabilities, and native integration with the full Adobe Experience Cloud — making it the right choice as they scale beyond what HubSpot was designed for",
+            "HubSpot and Marketo are identical in features",
+            "Tell the prospect to switch to a different CRM before considering Marketo"
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    }
+];
+
+// ════════════════════════════════════════════════════════════════════════════════
+//  CONFIG — adjust these values as needed
+// ════════════════════════════════════════════════════════════════════════════════
+const PASS_THRESHOLD    = 0.70;   // 70% required to pass
+const TIMER_SECS        = 30;     // seconds per question
+const LB_STORAGE_KEY    = 'adobe_bdr_quiz_v1';
+const MAX_LB_ENTRIES    = 10;     // top entries to keep
+const QUESTIONS_PER_RUN = 10;     // how many questions per quiz
+
+// ════════════════════════════════════════════════════════════════════════════════
+//  STATE
+// ════════════════════════════════════════════════════════════════════════════════
+let S = {
+    name:      '',
+    questions: [],
+    idx:       0,
+    answers:   [],   // array of { correct: bool, category: string }
+    timerID:   null,
+    timeLeft:  TIMER_SECS,
+    answered:  false
+};
+
+// ════════════════════════════════════════════════════════════════════════════════
+//  LEADERBOARD
+// ════════════════════════════════════════════════════════════════════════════════
+function loadLB() {
+    try { return JSON.parse(localStorage.getItem(LB_STORAGE_KEY)) || []; }
+    catch { return []; }
+}
+
+function saveLB(lb) {
+    localStorage.setItem(LB_STORAGE_KEY, JSON.stringify(lb));
+}
+
+function addScore(name, correct, total) {
+    const pct = Math.round((correct / total) * 100);
+    const lb  = loadLB();
+    lb.push({
+        name, correct, total, pct,
+        pass: pct >= Math.round(PASS_THRESHOLD * 100),
+        date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric' })
+    });
+    lb.sort((a, b) => b.pct - a.pct || b.correct - a.correct);
+    saveLB(lb.slice(0, MAX_LB_ENTRIES));
+}
+
+function renderLB(containerId) {
+    const lb  = loadLB();
+    const el  = document.getElementById(containerId);
+    if (!el) return;
+    if (!lb.length) {
+        el.innerHTML = '<div class="lb-empty">No scores yet — be the first!</div>';
+        return;
+    }
+    const medals = ['🥇','🥈','🥉'];
+    el.innerHTML = '<div class="lb-list">' +
+        lb.map((e, i) => `
+            <div class="lb-row ${i < 3 ? 'r'+(i+1) : ''}">
+                <span class="lb-rank ${i < 3 ? 'medal' : ''}">${i < 3 ? medals[i] : i+1}</span>
+                <span class="lb-name">${esc(e.name)}</span>
+                <span class="lb-pct">${e.pct}%</span>
+                <span class="lb-badge ${e.pass ? 'pass' : 'fail'}">${e.pass ? 'PASS' : 'FAIL'}</span>
+            </div>
+        `).join('') +
+    '</div>';
+}
+
+function updateStats() {
+    const lb = loadLB();
+    document.getElementById('stat-players').textContent = lb.length;
+    if (lb.length) {
+        const avg = Math.round(lb.reduce((s, e) => s + e.pct, 0) / lb.length);
+        document.getElementById('stat-avg').textContent    = avg + '%';
+        document.getElementById('stat-passes').textContent = lb.filter(e => e.pass).length;
+    } else {
+        document.getElementById('stat-avg').textContent    = '—';
+        document.getElementById('stat-passes').textContent = '0';
+    }
+}
+
+function resetLeaderboard() {
+    if (!confirm('Clear the entire leaderboard? This cannot be undone.')) return;
+    localStorage.removeItem(LB_STORAGE_KEY);
+    renderLB('lb-welcome');
+    updateStats();
+}
+
+// ════════════════════════════════════════════════════════════════════════════════
+//  QUIZ LOGIC
+// ════════════════════════════════════════════════════════════════════════════════
+function shuffle(arr) {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+}
+
+function startQuiz() {
+    const inp  = document.getElementById('player-name');
+    const name = inp.value.trim();
+    if (!name) {
+        inp.classList.add('error');
+        inp.focus();
+        setTimeout(() => inp.classList.remove('error'), 600);
+        return;
+    }
+    S.name      = name;
+    S.questions = shuffle(QUESTION_BANK).slice(0, Math.min(QUESTIONS_PER_RUN, QUESTION_BANK.length));
+    S.idx       = 0;
+    S.answers   = [];
+    showScreen('screen-quiz');
+    loadQuestion();
+}
+
+function loadQuestion() {
+    const q  = S.questions[S.idx];
+    S.answered = false;
+
+    // Category badge
+    const catEl  = document.getElementById('q-cat');
+    catEl.textContent = q.category;
+    const catMap = {
+        'AEM Sites':                  'aem-sites',
+        'AEM Assets':                 'aem-assets',
+        'AEP & Data':                 'aep-data',
+        'AJO / Marketo / Workfront':  'ajo-marketo'
+    };
+    catEl.className = 'cat-badge ' + (catMap[q.category] || '');
+
+    document.getElementById('q-progress').textContent = (S.idx + 1) + ' / ' + S.questions.length;
+    document.getElementById('q-text').textContent     = q.question;
+
+    // Render options
+    const letters = ['A','B','C','D'];
+    document.getElementById('q-options').innerHTML = q.options.map((opt, i) => `
+        <button class="opt-btn" id="opt${i}" onclick="pick(${i})">
+            <span class="opt-letter">${letters[i]}</span>
+            <span>${esc(opt)}</span>
+        </button>
+    `).join('');
+
+    // Reset feedback & next button
+    document.getElementById('feedback').className  = 'feedback';
+    document.getElementById('next-wrap').style.display = 'none';
+
+    startTimer();
+}
+
+// ── Timer ──────────────────────────────────────────────────────────────────
+function startTimer() {
+    stopTimer();
+    S.timeLeft = TIMER_SECS;
+    paintTimer();
+    S.timerID = setInterval(() => {
+        S.timeLeft--;
+        paintTimer();
+        if (S.timeLeft <= 0) { stopTimer(); if (!S.answered) timeUp(); }
+    }, 1000);
+}
+
+function stopTimer() {
+    clearInterval(S.timerID);
+    S.timerID = null;
+}
+
+function paintTimer() {
+    const pct    = (S.timeLeft / TIMER_SECS) * 100;
+    const fill   = document.getElementById('timer-fill');
+    const num    = document.getElementById('timer-num');
+    const urgent = S.timeLeft <= 5;
+    const warn   = S.timeLeft <= 10 && !urgent;
+
+    fill.style.width = pct + '%';
+    num.textContent  = S.timeLeft;
+    fill.className = 'timer-fill' + (urgent ? ' urgent' : warn ? ' warn' : '');
+    num.className  = 'timer-num'  + (urgent ? ' urgent' : warn ? ' warn' : '');
+}
+
+function timeUp() {
+    S.answered = true;
+    const correct = S.questions[S.idx].correctAnswer;
+    document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+    document.getElementById('opt' + correct).classList.add('correct');
+    S.answers.push({ correct: false, category: S.questions[S.idx].category });
+    showFeedback(false, "Time's up! The correct answer is highlighted above.");
+    document.getElementById('next-wrap').style.display = 'block';
+}
+
+// ── Answer selection ───────────────────────────────────────────────────────
+function pick(idx) {
+    if (S.answered) return;
+    S.answered = true;
+    stopTimer();
+
+    const q     = S.questions[S.idx];
+    const right = idx === q.correctAnswer;
+
+    document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
+    document.getElementById('opt' + idx).classList.add(right ? 'correct' : 'wrong');
+    if (!right) document.getElementById('opt' + q.correctAnswer).classList.add('correct');
+
+    S.answers.push({ correct: right, category: q.category });
+    showFeedback(right,
+        right
+            ? 'Correct! Great work.'
+            : 'Not quite. The correct answer is: "' + q.options[q.correctAnswer] + '"'
+    );
+    document.getElementById('next-wrap').style.display = 'block';
+}
+
+function showFeedback(ok, text) {
+    const fb = document.getElementById('feedback');
+    fb.className = 'feedback show ' + (ok ? 'correct' : 'wrong');
+    document.getElementById('fb-icon').textContent = ok ? '✓' : '✗';
+    document.getElementById('fb-text').textContent = text;
+}
+
+function nextQuestion() {
+    S.idx++;
+    if (S.idx >= S.questions.length) showResults();
+    else loadQuestion();
+}
+
+// ════════════════════════════════════════════════════════════════════════════════
+//  RESULTS
+// ════════════════════════════════════════════════════════════════════════════════
+function showResults() {
+    const total   = S.answers.length;
+    const correct = S.answers.filter(a => a.correct).length;
+    const pct     = correct / total;
+    const passed  = pct >= PASS_THRESHOLD;
+
+    addScore(S.name, correct, total);
+
+    document.getElementById('r-emoji').textContent    = passed ? '🎉' : '📚';
+    document.getElementById('r-verdict').textContent  = passed ? 'PASS' : 'FAIL';
+    document.getElementById('r-verdict').className    = 'result-verdict ' + (passed ? 'pass' : 'fail');
+    document.getElementById('r-sub').textContent      = correct + ' / ' + total + ' correct — ' + Math.round(pct * 100) + '%';
+    document.getElementById('r-hint').textContent     = passed
+        ? 'Threshold: ' + Math.round(PASS_THRESHOLD * 100) + '% · Nicely done, ' + S.name + '!'
+        : 'Threshold: ' + Math.round(PASS_THRESHOLD * 100) + '% · Keep studying and try again!';
+
+    // Category breakdown
+    const cats = {};
+    S.answers.forEach(a => {
+        if (!cats[a.category]) cats[a.category] = { c: 0, t: 0 };
+        cats[a.category].t++;
+        if (a.correct) cats[a.category].c++;
+    });
+
+    document.getElementById('breakdown').innerHTML = Object.entries(cats).map(([cat, d]) => {
+        const p   = Math.round((d.c / d.t) * 100);
+        const cls = p === 100 ? 'great' : p >= 60 ? 'good' : '';
+        return `
+            <div class="bd-row">
+                <div class="bd-meta">
+                    <span class="bd-cat">${esc(cat)}</span>
+                    <span class="bd-score">${d.c}/${d.t} &nbsp;&middot;&nbsp; ${p}%</span>
+                </div>
+                <div class="bd-track">
+                    <div class="bd-fill ${cls}" style="width:${p}%"></div>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    renderLB('lb-results');
+    showScreen('screen-results');
+}
+
+// ════════════════════════════════════════════════════════════════════════════════
+//  NAVIGATION
+// ════════════════════════════════════════════════════════════════════════════════
+function restartQuiz() {
+    stopTimer();
+    // Re-use same name; just restart
+    const name = S.name;
+    S.name      = name;
+    S.questions = shuffle(QUESTION_BANK).slice(0, Math.min(QUESTIONS_PER_RUN, QUESTION_BANK.length));
+    S.idx       = 0;
+    S.answers   = [];
+    showScreen('screen-quiz');
+    loadQuestion();
+}
+
+function goHome() {
+    stopTimer();
+    renderLB('lb-welcome');
+    updateStats();
+    showScreen('screen-welcome');
+}
+
+function showScreen(id) {
+    document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ════════════════════════════════════════════════════════════════════════════════
+//  UTILITIES
+// ════════════════════════════════════════════════════════════════════════════════
+function esc(s) {
+    return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+}
+
+// Enter key on name field starts the quiz
+document.getElementById('player-name').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') startQuiz();
+});
+
+// ── Initialise
+renderLB('lb-welcome');
+updateStats();
+</script>
+</body>
+</html>
