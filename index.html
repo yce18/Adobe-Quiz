@@ -379,129 +379,118 @@
 <script>
 // ════════════════════════════════════════════════════════════════════════════════
 //  QUESTION BANK — 45 questions across 5 sections
-//  Correct answers: 10× A, 10× B, 10× C, 10× D
-//  Correct answers are intentionally SHORT; distractors are longer/more verbose
+//  Correct answers: 15× A (0), 15× B (1), 15× C (2) — evenly distributed
 // ════════════════════════════════════════════════════════════════════════════════
 const QUESTION_BANK = [
 
     // ── SECTION 1: AEM Sites ──────────────────────────────────────────────────
 
-    // correct: B (1)
+    // Q1 correct: C (2)
     {
         question: "What is AEM Sites primarily used for?",
         options: [
-            "A customer data platform that ingests behavioural signals from web, mobile, and CRM to build unified real-time audience profiles for downstream activation",
-            "Enterprise CMS — build, manage, and publish web experiences without relying on IT",
-            "A marketing automation platform for running personalised email nurture sequences to inbound and outbound leads across multiple campaign workflows",
-            "A paid media management suite that centralises social, display, and search campaign planning and budget allocation in one interface"
+            "A real-time customer data platform that ingests behavioural signals from web, mobile, and CRM to unify individual profiles for downstream personalisation and audience activation.",
+            "A marketing automation platform that orchestrates personalised email, SMS, and push campaigns triggered by customer behaviour signals across inbound and outbound programme workflows.",
+            "An enterprise CMS that lets marketing teams build, manage, and publish web experiences without waiting on IT for every content update or page structure change."
         ],
-        correctAnswer: 1,
+        correctAnswer: 2,
         category: "AEM Sites"
     },
-    // correct: A (0)
+    // Q2 correct: A (0)
     {
         question: "A prospect says: 'Every time we need to update our website, we have to wait 2 weeks for IT.' Which AEM Sites feature directly solves this?",
         options: [
-            "Drag-and-drop authoring — marketers edit and publish pages directly, no code needed",
-            "The Adobe Analytics integration, which generates page-level content freshness reports that content teams use to prioritise their update queue based on live traffic impact data",
-            "Dynamic Media, which automates image resizing and device-specific reformatting so front-end developers no longer need to manually prepare variants for each breakpoint",
-            "AEM Cloud Manager, which compresses the CI/CD pipeline and automates infrastructure deployments, cutting the number of IT change-request tickets raised for content updates"
+            "AEM Sites' drag-and-drop authoring lets marketers edit, preview, and publish pages directly — no code and no IT change request required for routine content updates.",
+            "AEM Cloud Manager compresses the CI/CD pipeline and automates infrastructure deployments, reducing the volume of IT tickets raised for content updates and release cycles.",
+            "Dynamic Media automates image resizing and device-specific rendition generation, so developers spend less time preparing asset variants before each scheduled content release."
         ],
         correctAnswer: 0,
         category: "AEM Sites"
     },
-    // correct: C (2)
+    // Q3 correct: B (1)
     {
         question: "What is 'headless CMS' in the context of AEM Sites?",
         options: [
-            "A minimal AEM deployment mode that disables the visual page editor entirely, replacing it with a command-line-only interface designed for developer-centric content teams",
-            "An AEM configuration that enables fully offline operation, allowing the platform to serve cached content at events or in environments without reliable internet connectivity",
-            "Content managed in AEM, delivered via API to any frontend — one source, every channel",
-            "A performance configuration that removes all server-side page template rendering and shifts processing to the client browser to improve time-to-first-byte on high-traffic pages"
-        ],
-        correctAnswer: 2,
-        category: "AEM Sites"
-    },
-    // correct: D (3)
-    {
-        question: "What is Edge Delivery Services (EDS) and why is it a competitive differentiator for AEM?",
-        options: [
-            "A standalone, separately licensed CDN that enterprises use to serve high-definition video to global audiences with low buffering, sold independently of any AEM product tier",
-            "A built-in transactional email engine within AEM that handles triggered message delivery for order confirmations, password resets, and account notifications at high send volumes",
-            "A performance module restricted to AEM 6.5 LTS on-premise deployments that optimises rendering speed for organisations managing their own data centre infrastructure",
-            "Document-based authoring in Docs or SharePoint, pages served from the edge — 100/100 Lighthouse"
-        ],
-        correctAnswer: 3,
-        category: "AEM Sites"
-    },
-    // correct: A (0)
-    {
-        question: "A customer manages 30 regional websites in different languages. Which AEM Sites capability helps them manage this efficiently?",
-        options: [
-            "Multi-Site Manager and Live Copy — one master blueprint pushed to all regions, local overrides where needed",
-            "Adobe Target, which uses geolocation and browser language settings to serve automatically personalised content variants to visitors from each of the 30 regional markets without separate site structures",
-            "Adobe Campaign, which centralises multilingual email, SMS, and push notification campaigns for all regional marketing teams through a single shared workflow and approval interface",
-            "AEM Forms, which provides regional teams with a standardised digital request form to submit localisation requirements to the central content and translation management team"
-        ],
-        correctAnswer: 0,
-        category: "AEM Sites"
-    },
-    // correct: C (2)
-    {
-        question: "What are 'Experience Fragments' in AEM Sites?",
-        options: [
-            "Diagnostic error logs AEM generates and stores automatically whenever a page component fails during the server-side rendering or content publishing process",
-            "OSGi bundle components that developer teams maintain within AEM's backend framework to extend or override standard platform behaviour for custom enterprise use cases",
-            "Reusable content + layout blocks — hero, CTA, promo — droppable on any page or exported to email",
-            "Pre-configured audience segments imported from Adobe Analytics that dynamically trigger different content variants based on visitor behaviour, campaign source, or lifecycle stage"
-        ],
-        correctAnswer: 2,
-        category: "AEM Sites"
-    },
-    // correct: B (1)
-    {
-        question: "What are the two main deployment options for AEM Sites today?",
-        options: [
-            "AEM is a SaaS-only subscription — Adobe retired all on-premise licensing in 2022 as part of its cloud-first strategy and no longer supports any legacy on-premise path for existing customers",
-            "AEM 6.5 LTS (on-prem for legacy) and AEM as a Cloud Service (cloud-native, recommended)",
-            "AEM is available exclusively through AWS and Azure Marketplace as single-tenant deployments, with the customer's cloud team responsible for all infrastructure configuration and maintenance",
-            "Adobe operates AEM as a fully managed platform-as-a-service with no deployment options — all infrastructure, scaling, patching, and upgrade decisions are handled entirely by Adobe with no customer input"
+            "A minimal AEM deployment mode that removes the visual page editor entirely, requiring developer teams to manage all content updates through an API-only command-line interface.",
+            "Content is managed centrally in AEM and delivered via API to any frontend — website, mobile app, or digital kiosk — from one governed source with no channel-specific re-authoring.",
+            "A performance configuration that shifts all template rendering to the client browser rather than the server, improving time-to-first-byte on high-traffic pages without infrastructure changes."
         ],
         correctAnswer: 1,
         category: "AEM Sites"
     },
-    // correct: D (3)
+    // Q4 correct: C (2)
     {
-        question: "How does AEM Sites integrate with Adobe Target?",
+        question: "What is Edge Delivery Services (EDS) and why is it a competitive differentiator for AEM?",
         options: [
-            "Adobe Target generates entirely new personalised page templates that replace AEM-authored pages whenever a specific audience segment qualifies for a customised on-site experience",
-            "AEM pushes raw behavioural event streams to Target, which aggregates this data alongside third-party ad network signals to build retargeting audiences across Adobe Marketing Cloud",
-            "The AEM–Target integration requires an active Adobe Commerce licence and is unavailable as a standalone capability for customers using AEM Sites without a commerce deployment",
-            "AEM holds the content variants; Target picks which one each visitor sees in real time — no re-publishing"
+            "A globally distributed CDN that enterprises licence separately to serve high-definition video to international audiences with low buffering, sold independently of any AEM product tier.",
+            "A performance module restricted to AEM 6.5 LTS on-premise deployments that optimises rendering for organisations running their own data centre infrastructure rather than cloud services.",
+            "EDS lets teams author in Google Docs or SharePoint and serves pages directly from the edge, consistently achieving perfect Lighthouse scores without custom front-end engineering."
         ],
-        correctAnswer: 3,
+        correctAnswer: 2,
         category: "AEM Sites"
     },
-    // correct: A (0)
+    // Q5 correct: A (0)
     {
-        question: "A Creative Cloud customer produces great brand content but struggles to distribute it consistently across their website, app, and partner portals. What is the AEM Sites pitch?",
+        question: "A customer manages 30 regional websites in different languages. Which AEM Sites capability helps them manage this efficiently?",
         options: [
-            "AEM Sites activates Creative Cloud content at enterprise scale — publish to every channel with governance built in",
-            "Recommend building a dedicated in-house development team for each digital touchpoint so content can be managed with channel-specific tooling, bespoke integrations, and technical expertise per platform",
-            "Adobe Express is the recommended distribution solution for Creative Cloud customers, providing multi-channel publishing capabilities without requiring the additional investment or complexity of AEM",
-            "AEM is generally not the right fit when a customer already invests heavily in Creative Cloud, since the two product lines serve entirely different buyer personas with limited integration overlap"
+            "Multi-Site Manager with Live Copy lets teams push updates from one master blueprint to all 30 regional sites simultaneously, with local language overrides applied only where needed.",
+            "Adobe Target uses geolocation and browser language signals to serve personalised content variants to visitors from each region without requiring separate site structures in AEM.",
+            "Experience Fragments can be translated once centrally and shared across all 30 sites as reusable content blocks, cutting the authoring effort required for each local market."
         ],
         correctAnswer: 0,
         category: "AEM Sites"
     },
-    // correct: C (2)
+    // Q6 correct: B (1)
+    {
+        question: "What are 'Experience Fragments' in AEM Sites?",
+        options: [
+            "Structured error logs that AEM generates automatically whenever a page component fails during server-side rendering, stored in the repository for developer debugging and audit review.",
+            "Reusable content and layout blocks — hero banners, CTAs, promotional tiles — that authors build once and drop onto any AEM page or export directly to email campaign templates.",
+            "Pre-configured audience segments imported from Adobe Analytics that dynamically trigger different page content variants based on visitor behaviour, traffic source, or lifecycle stage."
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    // Q7 correct: C (2)
+    {
+        question: "What are the two main deployment options for AEM Sites today?",
+        options: [
+            "AEM is available only as a SaaS subscription — Adobe retired all on-premise licensing in 2022 and no longer supports any on-premise path for existing or prospective customers.",
+            "AEM is deployed exclusively through AWS and Azure Marketplace as single-tenant instances, with each customer's cloud engineering team managing all infrastructure configuration and maintenance.",
+            "AEM 6.5 LTS supports organisations with existing on-premise commitments, while AEM as a Cloud Service is the cloud-native, auto-updating path Adobe recommends for new deployments."
+        ],
+        correctAnswer: 2,
+        category: "AEM Sites"
+    },
+    // Q8 correct: A (0)
+    {
+        question: "How does AEM Sites integrate with Adobe Target?",
+        options: [
+            "AEM stores and manages the content variants; Target selects in real time which variant each visitor sees based on their audience membership and behaviour — no content re-publishing required.",
+            "The AEM–Target integration requires an active Adobe Commerce licence and is unavailable as a standalone capability for AEM Sites customers without a commerce environment deployed.",
+            "Adobe Target generates new personalised page templates that fully replace AEM-authored pages whenever a qualifying audience segment triggers a customised on-site experience rule."
+        ],
+        correctAnswer: 0,
+        category: "AEM Sites"
+    },
+    // Q9 correct: B (1)
+    {
+        question: "A Creative Cloud customer produces great brand content but struggles to distribute it consistently across their website, app, and partner portals. What is the AEM Sites pitch?",
+        options: [
+            "Adobe Express is the natural starting point for Creative Cloud customers needing multi-channel distribution without the implementation complexity or total cost of ownership of AEM Sites.",
+            "AEM Sites activates Creative Cloud content at enterprise scale — publishing governed brand experiences to every digital channel from one centrally managed and version-controlled content repository.",
+            "Building dedicated in-house development teams per channel ensures content is managed with the specialised tooling and domain expertise each individual platform requires at enterprise scale."
+        ],
+        correctAnswer: 1,
+        category: "AEM Sites"
+    },
+    // Q10 correct: C (2)
     {
         question: "What business problem does AEM Sites solve that WordPress or Drupal struggle with at enterprise scale?",
         options: [
-            "WordPress is faster to deploy and less expensive at enterprise scale, so AEM does not materially solve a content management problem that WordPress cannot already handle for large organisations",
-            "AEM is designed exclusively for Fortune 100 organisations and is not commercially viable or technically appropriate for mid-market or growth-stage brands evaluating enterprise CMS platforms",
-            "Native enterprise governance, security, personalisation, and Adobe ecosystem integration — no custom dev required",
-            "Drupal offers equivalent functionality to AEM across multi-site management, granular role-based permissions, integrated personalisation, and DAM connectivity for enterprise deployments"
+            "WordPress deploys faster and costs significantly less at enterprise scale, so AEM does not materially solve a content management problem that WordPress cannot already handle for large brands.",
+            "Drupal offers equivalent capability to AEM across multi-site management, granular role-based permissions, personalisation integration, and DAM connectivity for enterprise CMS deployments.",
+            "AEM delivers native enterprise governance, security, built-in personalisation, and deep Adobe ecosystem integration without the custom development that WordPress or Drupal require at scale."
         ],
         correctAnswer: 2,
         category: "AEM Sites"
@@ -509,433 +498,398 @@ const QUESTION_BANK = [
 
     // ── SECTION 2: AEM Assets ─────────────────────────────────────────────────
 
-    // correct: D (3)
+    // Q11 correct: A (0)
     {
         question: "What is the core job of AEM Assets?",
         options: [
-            "An AI-augmented photo editing suite built on top of Photoshop, designed for large in-house creative teams that need collaborative cloud-synced access to editing tools and shared asset libraries",
-            "A social media content calendar and scheduling platform with built-in cross-channel publishing, performance analytics, and audience engagement tracking across all major networks",
-            "A subscription and contract lifecycle management tool for tracking Adobe licence renewals, usage entitlements, and enterprise agreement compliance across global deployments",
-            "Enterprise DAM — one governed place to store, find, and distribute every approved brand asset"
+            "AEM Assets is an enterprise DAM — one governed place where marketing and creative teams store, search, version-control, and distribute every approved brand asset across the organisation.",
+            "AEM Assets is an AI-powered photo and video editing suite built for in-house creative teams that need collaborative cloud access to production tools and shared project libraries.",
+            "AEM Assets is a content scheduling and social publishing platform with cross-channel calendar management, engagement tracking, and audience analytics for distributed marketing teams."
         ],
-        correctAnswer: 3,
+        correctAnswer: 0,
         category: "AEM Assets"
     },
-    // correct: B (1)
+    // Q12 correct: B (1)
     {
         question: "A prospect says: 'Our teams use 5 different tools to store files and nobody can find the right version.' Which AEM Assets capability directly addresses this?",
         options: [
-            "Adobe Firefly, which uses generative AI to recreate missing or outdated brand assets from text prompts, eliminating the need to locate or restore originals from fragmented legacy file systems",
-            "One DAM — version control, smart search, role-based access, everyone on the latest approved file",
-            "Adobe Express, which provides marketers with a template-based editing environment so they can quickly recreate any required asset without needing to locate an authoritative source file first",
-            "Adobe Workfront, which implements a structured asset request and intake process that eliminates ad-hoc searching by routing all file requests through a formal project management workflow"
+            "Adobe Firefly generates brand assets from text prompts on demand, eliminating the need to locate originals by recreating them from creative briefs held across fragmented storage tools.",
+            "A single centralised DAM with version control, AI-powered smart search, and role-based access ensures every team works from the latest approved file rather than an outdated or duplicated copy.",
+            "Adobe Workfront creates a structured asset request and intake workflow that routes all file requests through a formal approval process before distributing them to the requesting team."
         ],
         correctAnswer: 1,
         category: "AEM Assets"
     },
-    // correct: A (0)
+    // Q13 correct: C (2)
     {
         question: "What does 'Smart Tags' do in AEM Assets?",
         options: [
-            "Sensei AI auto-tags assets on upload using your business taxonomy — instant search across millions of files",
-            "An automated watermarking workflow that overlays a configurable, tamper-evident brand mark onto every asset the moment it completes the upload process into the AEM Assets repository",
-            "A metadata rule that reads the uploader's Active Directory profile and stamps their full name, department, and cost centre code onto the asset as the primary searchable identifier in the DAM",
-            "An automation that publishes newly tagged and metadata-enriched assets directly to all connected social media accounts immediately after the asset passes the configured approval workflow stage"
+            "Smart Tags applies a tamper-evident watermark to every asset on upload, stamping a configurable brand mark before the file enters the approval workflow in the AEM Assets repository.",
+            "Smart Tags reads the uploader's Active Directory profile and stamps their name, department, and cost centre onto each asset as the primary searchable identifier in the DAM.",
+            "Adobe Sensei AI automatically analyses and tags every uploaded asset using your business taxonomy, making millions of files instantly searchable without requiring any manual metadata entry."
         ],
-        correctAnswer: 0,
+        correctAnswer: 2,
         category: "AEM Assets"
     },
-    // correct: C (2)
+    // Q14 correct: A (0)
     {
         question: "What is Dynamic Media in AEM Assets?",
         options: [
-            "A partnership integration between AEM Assets and leading social platforms for content scheduling, automated caption generation, and audience engagement tracking from within the DAM interface",
-            "A premium Adobe Stock connector that automatically licences and ingests approved stock imagery into AEM Assets, triggering downstream rendition and tagging workflows on import",
-            "One master upload → right size, format, and crop delivered to every device automatically",
-            "A standalone module within AEM Assets for managing closed-caption files, subtitle tracks, and automated transcript generation for video assets stored in large enterprise DAM libraries"
-        ],
-        correctAnswer: 2,
-        category: "AEM Assets"
-    },
-    // correct: B (1)
-    {
-        question: "What is the difference between AEM Assets Prime and AEM Assets Ultimate?",
-        options: [
-            "Prime is the full-featured cloud DAM tier — it includes everything in Ultimate plus additional storage and API capacity; upgrading to Ultimate simply removes per-month usage ceilings at a higher price point",
-            "Both are cloud tiers — Ultimate adds Content Hub (self-service brand portal) and deeper AI automation",
-            "Ultimate is purpose-built exclusively for video-first organisations with large media libraries; Prime is scoped for image and document-centric digital asset management deployments only",
-            "The products are commercially and functionally identical — the only distinction is the support SLA tier and the number of named users permitted under the enterprise software agreement"
-        ],
-        correctAnswer: 1,
-        category: "AEM Assets"
-    },
-    // correct: D (3)
-    {
-        question: "How does AEM Assets integrate with AEM Sites?",
-        options: [
-            "AEM Sites and AEM Assets maintain entirely independent product data environments — assets are transferred between them via a third-party middleware integration layer built and maintained by the customer",
-            "Content authors must manually export a compressed ZIP archive from AEM Assets and then reimport the files through the AEM Sites DAM upload interface each time content needs updating",
-            "AEM Sites is architecturally restricted to Adobe Stock as its sole approved asset source — it cannot connect to AEM Assets or any other external digital asset management repository",
-            "Authors drag assets from the DAM into the page editor directly; Dynamic Media handles device renditions"
-        ],
-        correctAnswer: 3,
-        category: "AEM Assets"
-    },
-    // correct: A (0)
-    {
-        question: "A global brand with 500 regional marketers needs approved assets available for local campaigns without risking brand inconsistency. Which AEM Assets feature addresses this?",
-        options: [
-            "Content Hub — approved assets, self-service access, central permission control",
-            "Adobe Marketo Engage, which natively integrates with the central brand repository to push approved email templates and campaign creative assets directly to regional marketing operations teams",
-            "Adobe Express Premium, which provides regional teams with a browser-based environment pre-loaded with brand-approved templates, fonts, and colour palettes they cannot customise beyond defined guardrails",
-            "AEM Forms, which creates a governed digital intake process for regional asset requests, routing each submission through a defined approval workflow before releasing the requested files to the team"
+            "Dynamic Media takes one master upload and automatically delivers the correct size, format, and crop to every device and channel, eliminating manual rendition preparation entirely.",
+            "Dynamic Media is a premium Adobe Stock connector that automatically licences and ingests approved stock imagery into AEM Assets, triggering rendition and tagging workflows on each import.",
+            "Dynamic Media is a module for managing closed-caption files, subtitle tracks, and automated transcript generation for video assets stored in large enterprise DAM libraries."
         ],
         correctAnswer: 0,
         category: "AEM Assets"
     },
-    // correct: C (2)
+    // Q15 correct: B (1)
     {
-        question: "What role does Adobe Sensei AI play in AEM Assets?",
+        question: "What is the difference between AEM Assets Prime and AEM Assets Ultimate?",
         options: [
-            "Adobe Sensei is dedicated to powering personalisation and A/B testing within AEM Sites — it has no embedded role, function, or connection to any capability within the AEM Assets product suite",
-            "Sensei is an optional, separately licensed AI module for AEM Assets customers — it is not included in the default product configuration and must be activated with a separate purchase order",
-            "Smart Tags, AI metadata, colour search, background removal — Sensei cuts manual asset prep significantly",
-            "Sensei exclusively processes structured numerical and behavioural data streams from Adobe Analytics event pipelines — it has no capability to analyse, interpret, or tag visual image or video content"
-        ],
-        correctAnswer: 2,
-        category: "AEM Assets"
-    },
-    // correct: B (1)
-    {
-        question: "What is a common pain point that triggers an AEM Assets conversation with a Creative Cloud prospect?",
-        options: [
-            "The customer is actively evaluating whether to replace their full Adobe Creative Cloud investment with a combination of open-source and lower-cost SaaS design and production tools to cut licensing costs",
-            "Brand files scattered across email threads and Dropbox — outdated versions end up in live campaigns",
-            "The customer currently operates a mature, well-governed enterprise DAM and has high confidence in their existing asset management processes, tooling, version control, and distribution workflows",
-            "The organisation has identified a strategic initiative to significantly reduce creative headcount by automating the bulk of routine design and content production work through AI image generation tools"
+            "Prime is the full-featured cloud DAM tier — it includes everything in Ultimate plus additional storage; Ultimate simply removes per-month API usage ceilings at a higher price point.",
+            "Both are cloud DAM tiers — Ultimate adds Content Hub for governed self-service brand asset access and deeper AI automation on top of everything already included in Prime.",
+            "Ultimate is purpose-built for video-first organisations with large media libraries; Prime is scoped for image and document-centric digital asset management use cases only."
         ],
         correctAnswer: 1,
         category: "AEM Assets"
     },
-    // correct: D (3)
+    // Q16 correct: C (2)
+    {
+        question: "How does AEM Assets integrate with AEM Sites?",
+        options: [
+            "AEM Sites and AEM Assets maintain independent data environments and are connected via a customer-built middleware integration layer that handles format conversion and metadata mapping.",
+            "Content authors must export a compressed archive from AEM Assets and reimport the files through the AEM Sites upload interface each time new content is needed for a page update.",
+            "Authors drag approved assets from the DAM directly into the AEM Sites page editor, and Dynamic Media automatically handles device-specific renditions at the point of publish."
+        ],
+        correctAnswer: 2,
+        category: "AEM Assets"
+    },
+    // Q17 correct: A (0)
+    {
+        question: "A global brand with 500 regional marketers needs approved assets available for local campaigns without risking brand inconsistency. Which AEM Assets feature addresses this?",
+        options: [
+            "Content Hub creates a governed self-service portal where regional marketers access only pre-approved, on-brand assets — central teams control permissions without fielding individual download requests.",
+            "Adobe Marketo Engage integrates natively with the brand asset repository to push approved email templates and campaign creative directly to regional marketing operations teams on demand.",
+            "Adobe Express Premium provides regional teams with a browser-based design environment pre-loaded with brand-approved templates and colour palettes locked against unauthorised modification."
+        ],
+        correctAnswer: 0,
+        category: "AEM Assets"
+    },
+    // Q18 correct: B (1)
+    {
+        question: "What role does Adobe Sensei AI play in AEM Assets?",
+        options: [
+            "Adobe Sensei powers personalisation and A/B testing within AEM Sites but has no embedded function or native connection to any capability within the AEM Assets product suite.",
+            "Sensei delivers smart tagging, AI metadata extraction, colour-based visual search, and background removal — reducing the manual effort required to prepare and organise assets at scale.",
+            "Sensei is a separately licensed AI module that must be purchased independently — it is not included in the default AEM Assets Prime or Ultimate product configuration."
+        ],
+        correctAnswer: 1,
+        category: "AEM Assets"
+    },
+    // Q19 correct: C (2)
+    {
+        question: "What is a common pain point that triggers an AEM Assets conversation with a Creative Cloud prospect?",
+        options: [
+            "The customer is evaluating whether to replace Creative Cloud with open-source design tools and needs a DAM solution that integrates cleanly with non-Adobe production pipelines.",
+            "The customer already has a mature, well-governed enterprise DAM and high confidence in their existing asset management, version control, and creative distribution workflows.",
+            "Brand files scattered across email threads, shared drives, and cloud folders mean outdated asset versions routinely appear in live campaigns and customer-facing marketing materials."
+        ],
+        correctAnswer: 2,
+        category: "AEM Assets"
+    },
+    // Q20 correct: A (0)
     {
         question: "How does AEM Assets support e-commerce use cases?",
         options: [
-            "AEM Assets does not offer any native integration or certified connector with third-party e-commerce or product information management platforms, limiting its use to internal brand workflows only",
-            "AEM Assets is architecturally scoped to internal brand documentation and creative production workflows and is not designed, tested, or supported for customer-facing product content at e-commerce scale",
-            "Every product page requires a separate manual upload directly into the e-commerce storefront; AEM Assets functions only as an upstream archive and cannot push content to downstream commerce systems",
-            "Central DAM → Adobe Commerce product pages → Dynamic Media handles every device rendition automatically"
+            "AEM Assets serves as the central DAM feeding approved product imagery to Adobe Commerce pages, with Dynamic Media automatically delivering the correct rendition to every device and viewport.",
+            "AEM Assets connects to e-commerce platforms only through a separately purchased Commerce connector licence that is not included in the Prime or Ultimate product tiers.",
+            "Each product page requires a manual upload into the storefront; AEM Assets functions as an upstream archive only and cannot push content to downstream commerce systems directly."
         ],
-        correctAnswer: 3,
+        correctAnswer: 0,
         category: "AEM Assets"
     },
 
     // ── SECTION 3: AEP & Data ─────────────────────────────────────────────────
 
-    // correct: C (2)
+    // Q21 correct: B (1)
     {
         question: "What is Adobe Experience Platform (AEP) in simple terms?",
         options: [
-            "Adobe's forthcoming replacement for AEM Sites that includes a native drag-and-drop page builder, eliminating the need for a separate content management system anywhere within Experience Cloud",
-            "A high-volume batch email campaign tool built for marketing operations teams running large-scale send programmes across multiple brands, geographies, and product lines simultaneously",
-            "Adobe's data foundation — ingests and unifies customer data from every source into real-time profiles",
-            "A social media listening, content scheduling, influencer management, and cross-platform publishing tool built for enterprise marketing teams operating across multiple global markets"
+            "AEP is Adobe's next-generation replacement for AEM Sites — it includes a native drag-and-drop page builder designed to eliminate the need for a standalone CMS within Experience Cloud.",
+            "AEP is Adobe's data foundation — it ingests customer data from every source, unifies it into real-time individual profiles, and activates those profiles across every downstream channel.",
+            "AEP is a high-volume batch email campaign tool built for marketing operations teams running large send programmes across multiple brands, geographies, and concurrent product lines."
         ],
-        correctAnswer: 2,
+        correctAnswer: 1,
         category: "AEP & Data"
     },
-    // correct: A (0)
+    // Q22 correct: C (2)
     {
         question: "What is the key difference between AEM and AEP?",
         options: [
-            "AEM = content layer; AEP = data layer. AEP knows who the customer is; AEM delivers the right experience",
-            "AEM and AEP are presented commercially as separate products but share a unified technical architecture and expose an identical underlying data model and content schema to all customers",
-            "AEP is purpose-built exclusively for enterprise B2B organisations managing complex multi-tier account hierarchies; AEM is designed solely for B2C brands operating e-commerce storefronts",
-            "Adobe deprecated AEM in 2023 as part of a cloud consolidation programme, positioning AEP as the single unified platform for both content management and customer data across the full portfolio"
+            "AEM and AEP are commercially separate but share a unified technical architecture and expose an identical underlying data model and content schema across all customer deployments.",
+            "AEP is purpose-built for enterprise B2B organisations managing complex multi-tier account hierarchies; AEM is designed solely for B2C brands operating customer-facing e-commerce storefronts.",
+            "AEM is the content layer — it manages and publishes digital experiences; AEP is the data layer — it builds the unified customer profile that informs what experience each person receives."
         ],
-        correctAnswer: 0,
+        correctAnswer: 2,
         category: "AEP & Data"
     },
-    // correct: D (3)
+    // Q23 correct: A (0)
     {
         question: "What is Adobe Real-Time CDP?",
         options: [
-            "Adobe's globally distributed CDN infrastructure service built to accelerate website and progressive web application delivery for enterprise brands handling high-traffic digital properties at scale",
-            "A campaign timeline and resource scheduling tool that helps marketing operations teams coordinate multi-channel launch plans and track asset delivery dependencies across concurrent campaigns",
-            "A configurable executive reporting layer that surfaces Adobe Analytics attribution and conversion metrics in role-based dashboards for senior marketing and digital leadership stakeholders",
-            "Marketer-facing app on AEP — unifies first-party data into real-time profiles, activates audiences across every channel"
+            "Real-Time CDP is the marketer-facing application built on AEP — it unifies first-party data into real-time customer profiles and activates targeted audiences across every paid and owned channel.",
+            "Real-Time CDP is Adobe's globally distributed CDN infrastructure service built to accelerate website delivery for enterprise brands managing high-traffic digital properties across regions.",
+            "Real-Time CDP is a campaign timeline and resource scheduling tool helping marketing operations teams coordinate multi-channel launch plans and track cross-team asset delivery dependencies."
         ],
-        correctAnswer: 3,
+        correctAnswer: 0,
         category: "AEP & Data"
     },
-    // correct: B (1)
+    // Q24 correct: B (1)
     {
         question: "What problem does AEP solve that older marketing clouds could not?",
         options: [
-            "AEP adds a managed website hosting and infrastructure layer that older marketing cloud platforms were never designed or architected to provide for enterprise digital experience teams",
-            "One real-time profile per customer, stitched from every source — no more fragmented siloed data",
-            "AEP is a fully integrated analytics replacement that makes Adobe Analytics, CJA, and all third-party measurement tools entirely redundant for enterprise marketing and insights teams",
-            "AEP is primarily a cloud infrastructure cost-reduction and vendor consolidation platform for IT and data engineering teams looking to simplify their pipeline and storage architecture"
+            "AEP adds a managed website hosting and infrastructure layer that older marketing cloud platforms were never designed or architected to deliver for enterprise digital experience teams.",
+            "AEP stitches data from every source — web, mobile, CRM, in-store — into a single real-time profile per customer, eliminating the fragmented, siloed view that older platforms produced.",
+            "AEP is a cloud infrastructure cost-reduction platform for IT and data engineering teams looking to consolidate vendors and simplify their overall data pipeline and storage architecture."
         ],
         correctAnswer: 1,
         category: "AEP & Data"
     },
-    // correct: A (0)
+    // Q25 correct: C (2)
     {
         question: "What is Customer Journey Analytics (CJA)?",
         options: [
-            "Cross-channel analytics on AEP data — web, mobile, CRM, and in-store stitched in one workspace",
-            "A post-purchase satisfaction platform collecting NPS, CSAT, and CES survey responses through email prompts, in-app surveys, and QR codes at physical retail locations globally",
-            "A cloud-native rebuild of Adobe Analytics that runs entirely outside the AEP ecosystem — customers can deploy it on top of any third-party data warehouse without purchasing or connecting any Adobe Experience Platform services",
-            "A UX research suite providing heatmaps, scroll depth analysis, and session replay recordings of authenticated and anonymous user sessions across web and native mobile applications"
-        ],
-        correctAnswer: 0,
-        category: "AEP & Data"
-    },
-    // correct: C (2)
-    {
-        question: "A prospect uses Salesforce CRM, Google Analytics, and several ad platforms but says 'we can't connect the dots between all our data.' How does AEP address this?",
-        options: [
-            "AEP is a closed, Adobe-only ecosystem — it ingests data exclusively from other Adobe Experience Cloud products and does not support native connection to Salesforce, Google, or any third-party platform",
-            "The customer must first fully migrate their revenue operations from Salesforce to an Adobe-native CRM before AEP can begin ingesting and unifying their customer data effectively",
-            "Pre-built connectors for Salesforce, Google, Meta, and hundreds more — every source into one profile, no custom engineering",
-            "AEP is only commercially available to customers who have licensed the full Adobe Experience Cloud suite — standalone AEP purchases require all four product pillars to already be active"
+            "CJA is a post-purchase satisfaction platform collecting NPS, CSAT, and CES survey responses through email prompts, in-app surveys, and QR codes at physical retail touchpoints.",
+            "CJA is a UX research suite delivering session replay recordings, scroll depth analysis, and heatmaps of authenticated user sessions across web and native mobile applications.",
+            "CJA stitches cross-channel data from AEP — web, mobile, CRM, and in-store — into a unified analysis workspace, giving analysts a complete view of the customer journey end to end."
         ],
         correctAnswer: 2,
         category: "AEP & Data"
     },
-    // correct: D (3)
+    // Q26 correct: A (0)
+    {
+        question: "A prospect uses Salesforce CRM, Google Analytics, and several ad platforms but says 'we can't connect the dots between all our data.' How does AEP address this?",
+        options: [
+            "AEP provides pre-built source connectors for Salesforce, Google, Meta, and hundreds of other platforms, ingesting all data into unified customer profiles without custom engineering work.",
+            "The prospect must first fully migrate their revenue operations from Salesforce to an Adobe-native CRM before AEP can begin ingesting and unifying their customer data effectively.",
+            "AEP is only available to customers who have licensed the full Adobe Experience Cloud suite — standalone purchases require all four product pillars to be active and deployed first."
+        ],
+        correctAnswer: 0,
+        category: "AEP & Data"
+    },
+    // Q27 correct: B (1)
     {
         question: "How does AEP support a first-party data strategy — and why does this matter now?",
         options: [
-            "AEP is architecturally optimised for third-party cookie ingestion and relies on active data partnerships with major advertising networks that remain widely available and unaffected by browser privacy changes",
-            "First-party data collection is a secondary use case within AEP — its primary and strongest capability is as a real-time journey orchestration and cross-channel message activation tool for marketers",
-            "AEP operates exclusively on anonymised aggregated cohort data segments — it does not maintain any personally identifiable customer records or individual identity graphs within its profile store",
-            "Built for first-party data — collect, unify, activate your own customer data as third-party cookies disappear"
-        ],
-        correctAnswer: 3,
-        category: "AEP & Data"
-    },
-    // correct: B (1)
-    {
-        question: "What is the relationship between AEP and Adobe Journey Optimizer (AJO)?",
-        options: [
-            "AJO and AEP are directly competing products within Adobe's portfolio, each offering overlapping and redundant customer data unification, profiling, and real-time personalisation capabilities",
-            "AEP builds the unified profile; AJO uses it to send the right message, at the right moment, on the right channel",
-            "AJO is exclusively fed by Marketo Engage lead records and campaign history — it has no native connection to AEP unified profiles or any real-time streaming event data from the platform",
-            "AJO is designed to fully replace AEP once a brand has completed its initial data collection and unification phase and is ready to shift its entire investment into journey activation"
+            "AEP is architecturally optimised for third-party cookie ingestion and relies on data partnerships with advertising networks that remain widely available and unaffected by browser privacy changes.",
+            "AEP is built for first-party data — it collects, unifies, and activates a brand's own customer data, making it the right foundation as third-party cookie deprecation continues to accelerate.",
+            "AEP operates exclusively on anonymised aggregated cohort segments and does not store individually identifiable customer records or maintain any individual identity graph within its profile store."
         ],
         correctAnswer: 1,
         category: "AEP & Data"
     },
-    // correct: A (0)
+    // Q28 correct: C (2)
+    {
+        question: "What is the relationship between AEP and Adobe Journey Optimizer (AJO)?",
+        options: [
+            "AJO and AEP are directly competing products within Adobe's portfolio, each offering overlapping customer data unification and real-time personalisation capabilities to the same enterprise buyer.",
+            "AJO is exclusively fed by Marketo Engage lead records and campaign history — it has no native connection to AEP unified profiles or real-time streaming event data from the platform.",
+            "AEP builds and maintains the unified customer profile; AJO reads that profile to send the right message at the right moment across every available owned and paid channel."
+        ],
+        correctAnswer: 2,
+        category: "AEP & Data"
+    },
+    // Q29 correct: A (0)
     {
         question: "Which best describes how a large telco like Verizon might use AEP?",
         options: [
-            "App, store, online account, call centre — one real-time profile, personalised offers at every touchpoint",
-            "Verizon uses AEP to replace their public-facing website CMS and manage all customer-facing content across consumer and enterprise product lines from a single unified platform",
-            "Verizon migrated their entire enterprise CRM, billing, and account management infrastructure onto AEP, decommissioning their legacy Siebel and Salesforce environments in a single programme",
-            "Verizon uses AEP exclusively to centralise and aggregate paid advertising performance data from Google Search, Meta, and their programmatic display network partners for reporting"
+            "Verizon unifies signals from the mobile app, retail stores, online account portal, and call centre into one real-time customer profile, enabling personalised offers across every touchpoint.",
+            "Verizon uses AEP to replace its public-facing website CMS and manage all customer-facing content across consumer and enterprise product lines from a single unified platform.",
+            "Verizon uses AEP exclusively to aggregate paid advertising performance data from Google Search, Meta, and programmatic display partners for unified cross-channel attribution reporting."
         ],
         correctAnswer: 0,
         category: "AEP & Data"
     },
-    // correct: C (2)
+    // Q30 correct: B (1)
     {
         question: "In your Greenfield BDR territory, a prospect is a Creative Cloud customer that sells products online. How would you connect AEP to their business?",
         options: [
-            "AEP has no viable use case for companies whose primary revenue model is based on selling physical or digital products online — it is designed for service-led industries with complex CRM data",
-            "The correct sequencing is to first migrate the prospect's storefront to Adobe Commerce and complete a full platform integration before beginning any AEP data strategy or commercial conversation",
-            "Unify browse, cart abandon, and purchase history with CRM data → personalised recommendations, cart recovery, loyalty",
-            "AEP's enterprise-only minimum contract thresholds make it economically inaccessible and commercially impractical for any organisation below Fortune 100 revenue scale"
+            "AEP has no viable use case for product-led businesses — it is designed for service-led industries with complex CRM and account management data rather than transactional commerce signals.",
+            "Unify browse history, cart abandonment events, and purchase records with CRM data to power personalised product recommendations, automated cart recovery, and loyalty programme campaigns.",
+            "AEP's enterprise-only minimum contract thresholds make it economically inaccessible for any organisation below Fortune 100 revenue scale that sells products through digital channels."
         ],
-        correctAnswer: 2,
+        correctAnswer: 1,
         category: "AEP & Data"
     },
 
     // ── SECTION 4: AJO / Marketo / Workfront ─────────────────────────────────
 
-    // correct: D (3)
+    // Q31 correct: C (2)
     {
         question: "What is Adobe Journey Optimizer (AJO) used for?",
         options: [
-            "A brand-governed digital asset management platform that centralises creative content libraries and enforces usage permissions for distributed marketing teams operating across multiple global regions",
-            "An enterprise website building and hosting platform that enables non-technical marketing teams to create, manage, and launch content-driven digital experiences without relying on development resources",
-            "An internal project coordination and resource management tool that handles creative briefs, campaign timelines, approval routing, and cross-team work visibility for marketing operations teams",
-            "Real-time journey orchestration — right message, right channel, triggered by live AEP behaviour"
+            "AJO is a brand-governed digital asset management platform that centralises creative libraries and enforces asset usage permissions for distributed marketing teams across global regions.",
+            "AJO is an internal project coordination tool that manages creative briefs, campaign timelines, approval routing, and cross-team work visibility for marketing operations teams.",
+            "AJO orchestrates real-time customer journeys — triggering the right message on the right channel at the right moment based on live behaviour signals from unified AEP profiles."
         ],
-        correctAnswer: 3,
+        correctAnswer: 2,
         category: "AJO / Marketo / Workfront"
     },
-    // correct: B (1)
+    // Q32 correct: A (0)
     {
         question: "When a prospect asks how AJO and Marketo Engage differ in core design purpose, what is the clearest positioning statement?",
         options: [
-            "AJO and Marketo Engage are the same product marketed under two different names as part of Adobe's strategy to serve both B2B and B2C buyers with a single underlying automation platform",
-            "AJO is purpose-built for real-time event-triggered consumer journeys; Marketo leads on B2B demand gen, lead scoring, and ABM",
-            "Marketo Engage is available only to large enterprise organisations; AJO is Adobe's purpose-built marketing automation offering for small and medium-sized businesses seeking affordable solutions",
-            "AJO is a social media management and scheduling tool while Marketo Engage is narrowly scoped to email campaign creation, list management, and basic autoresponder sequence operations"
+            "AJO is purpose-built for real-time, event-triggered consumer journeys across owned channels; Marketo leads on B2B demand generation, lead scoring, and account-based marketing execution.",
+            "AJO is scoped to social media management and scheduling while Marketo Engage covers email campaign creation, list management, and basic autoresponder sequence configuration.",
+            "AJO and Marketo Engage are the same platform marketed under two product names — Adobe serves both B2B and B2C buyers with a single underlying automation and journey orchestration engine."
         ],
-        correctAnswer: 1,
+        correctAnswer: 0,
         category: "AJO / Marketo / Workfront"
     },
-    // correct: A (0)
+    // Q33 correct: B (1)
     {
         question: "What is Marketo Engage's primary strength?",
         options: [
-            "B2B demand gen — lead nurturing, scoring, CRM sync, and ABM to align sales and marketing",
-            "Building and hosting conversion-optimised landing pages, microsites, and gated content hubs for inbound B2B demand generation and account-based marketing programme delivery at scale",
-            "Providing a centralised, governed content repository for brand-approved sales materials, enabling distributed field sales teams to access on-message collateral for customer-facing engagements",
-            "Delivering real-time, AI-driven product recommendation personalisation on B2C e-commerce product listing pages through direct native integration with major commerce platform providers"
-        ],
-        correctAnswer: 0,
-        category: "AJO / Marketo / Workfront"
-    },
-    // correct: C (2)
-    {
-        question: "What is Journey Optimizer B2B Edition?",
-        options: [
-            "A commercially reduced, feature-limited version of Adobe Journey Optimizer offered at a lower price point for smaller organisations that cannot justify the full enterprise product investment",
-            "A conversational AI and live-chat customer service platform for B2B support teams managing high-volume inbound service request queues, built natively on top of AEP infrastructure",
-            "Orchestrates journeys for buying groups in target accounts — Marketo lead data + account-level AI personalisation",
-            "A specialised analytics and attribution reporting add-on for Marketo Engage, surfacing account-level engagement scores, pipeline influence metrics, and third-party intent data for sales teams"
-        ],
-        correctAnswer: 2,
-        category: "AJO / Marketo / Workfront"
-    },
-    // correct: D (3)
-    {
-        question: "What is Adobe Workfront used for?",
-        options: [
-            "A real-time customer data unification and identity resolution platform connecting CRM, web, mobile, and offline data sources to build persistent profiles for personalisation activation",
-            "A web content management and multi-site publishing platform enabling regional marketing teams to create, localise, and deploy digital experiences across brand sites and international markets",
-            "A marketing performance analytics and multi-touch attribution platform that tracks campaign ROI, conversion funnels, and channel efficiency to inform media spend allocation decisions",
-            "Enterprise work management — tasks, timelines, briefs, and approvals so campaigns ship without chaos"
-        ],
-        correctAnswer: 3,
-        category: "AJO / Marketo / Workfront"
-    },
-    // correct: A (0)
-    {
-        question: "How does Workfront connect to AEM and Creative Cloud to create a 'content supply chain'?",
-        options: [
-            "Workfront (plan and approve) → Creative Cloud (create) → AEM (publish) — handoffs eliminated",
-            "Workfront is architecturally built around Microsoft Office and SharePoint document workflows and does not support any native integration with products in the Adobe Creative or Experience Cloud portfolios",
-            "Workfront assumes full ownership of the content publishing pipeline in this setup, replacing AEM Sites as the platform where all marketing content is managed, versioned, and activated for live channels",
-            "The three products are commercially independent solutions with no certified cross-product integration — workflow continuity between them requires custom middleware development by the customer"
-        ],
-        correctAnswer: 0,
-        category: "AJO / Marketo / Workfront"
-    },
-    // correct: B (1)
-    {
-        question: "A prospect's campaign team says they lose hours every week tracking approvals via email and Slack. Which Adobe product is the right fit?",
-        options: [
-            "Adobe Analytics, which benchmarks approval cycle duration against industry norms, quantifies the revenue impact of slow sign-offs, and generates automated alerts when SLA thresholds are breached",
-            "Workfront — automated routing, version tracking, and deadlines replace email and Slack chaos",
-            "Adobe Target, which can run controlled multi-variant experiments across different approval workflow configurations to identify which routing logic produces the fastest content release turnaround time",
-            "AEM Forms, which converts unstructured email approval requests into structured digital submissions with mandatory fields and automated escalation rules when response deadlines are missed"
+            "Marketo's primary strength is building and hosting conversion-optimised landing pages and gated content hubs for inbound demand generation and account-based marketing programme delivery.",
+            "Marketo Engage excels at B2B demand generation — lead nurturing programmes, behavioural scoring models, deep CRM synchronisation, and full account-based marketing execution at enterprise scale.",
+            "Marketo's primary strength is delivering real-time AI-driven product recommendations on B2C e-commerce product listing pages through native integration with major commerce platform providers."
         ],
         correctAnswer: 1,
         category: "AJO / Marketo / Workfront"
     },
-    // correct: C (2)
+    // Q34 correct: C (2)
     {
-        question: "In what scenario would you recommend Adobe Journey Optimizer over Marketo Engage?",
+        question: "What is Journey Optimizer B2B Edition?",
         options: [
-            "A B2B SaaS vendor building a 6-month, multi-touch nurture programme for senior procurement decision-makers at named enterprise accounts within a specific regulated vertical market",
-            "A direct-to-consumer brand launching its first email welcome series and monthly newsletter, with no existing CRM integration, lead scoring model, or real-time behavioural trigger requirements",
-            "A retail bank — personalised push notification seconds after a customer checks their balance",
-            "A technology company running a quarterly account-based marketing campaign targeting a curated list of named Fortune 500 accounts through a coordinated sales and marketing motion"
+            "B2B Edition is a feature-limited version of AJO offered at a reduced price point for smaller organisations that cannot justify the full enterprise product investment and contract commitment.",
+            "B2B Edition is a conversational AI and live-chat platform for B2B support teams managing high-volume inbound service queues, built natively on top of AEP infrastructure.",
+            "B2B Edition orchestrates journeys for entire buying groups within target accounts, combining Marketo lead engagement data with account-level AI personalisation for complex B2B sales cycles."
         ],
         correctAnswer: 2,
         category: "AJO / Marketo / Workfront"
     },
-    // correct: A (0)
+    // Q35 correct: A (0)
     {
-        question: "What is 'GenStudio' in the Adobe Digital Experience portfolio?",
+        question: "What is Adobe Workfront used for?",
         options: [
-            "AI platform for on-brand content creation at scale — generate, review, and activate across campaigns",
-            "An enterprise-grade upgrade to Adobe Photoshop and Illustrator that adds AI-assisted design features, shared cloud libraries, and structured multi-stakeholder approval workflows for large in-house studios",
-            "A comprehensive production scheduling and multi-project resource management platform purpose-built for professional video production studios running complex, multi-brand delivery pipelines",
-            "A specialised analytics dashboard measuring the downstream business performance and audience engagement impact of creative assets across all paid, owned, and earned digital channels"
+            "Workfront is an enterprise work management platform — it centralises campaign tasks, timelines, creative briefs, and approval workflows so marketing programmes ship predictably and on schedule.",
+            "Workfront is a real-time customer data unification platform connecting CRM, web, mobile, and offline data sources to build persistent profiles for downstream personalisation and activation.",
+            "Workfront is a marketing performance analytics platform tracking campaign ROI, conversion funnels, and channel efficiency to inform media spend allocation decisions for marketing teams."
         ],
         correctAnswer: 0,
         category: "AJO / Marketo / Workfront"
     },
-    // correct: D (3)
+    // Q36 correct: B (1)
+    {
+        question: "How does Workfront connect to AEM and Creative Cloud to create a 'content supply chain'?",
+        options: [
+            "Workfront is architecturally built around Microsoft Office and SharePoint document workflows and does not support native integration with Adobe Creative or Experience Cloud products.",
+            "Workfront manages planning and approvals, Creative Cloud handles creative production, and AEM governs publishing — the three integrate natively to eliminate handoff delays across the full content cycle.",
+            "Workfront assumes full ownership of the content publishing pipeline in this model, replacing AEM Sites as the platform where all marketing content is versioned and activated for live channels."
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    // Q37 correct: C (2)
+    {
+        question: "A prospect's campaign team says they lose hours every week tracking approvals via email and Slack. Which Adobe product is the right fit?",
+        options: [
+            "Adobe Analytics can benchmark approval cycle duration against industry norms and generate automated alerts when approval SLA thresholds are consistently breached across campaign types.",
+            "Adobe Target can run controlled experiments across different approval workflow configurations to identify which routing logic produces the fastest content release turnaround time.",
+            "Workfront replaces email and Slack approval chaos with automated routing, version tracking, deadline notifications, and a full audit trail — all within one campaign management workspace."
+        ],
+        correctAnswer: 2,
+        category: "AJO / Marketo / Workfront"
+    },
+    // Q38 correct: A (0)
+    {
+        question: "In what scenario would you recommend Adobe Journey Optimizer over Marketo Engage?",
+        options: [
+            "A retail bank wanting to send a personalised push notification seconds after a customer checks their balance — real-time, event-triggered, and consumer-facing is where AJO excels over Marketo.",
+            "A B2B SaaS vendor building a 6-month multi-touch nurture programme for enterprise procurement decision-makers — the complexity and lead scoring depth points squarely to Marketo Engage.",
+            "A technology company running a quarterly ABM campaign targeting named Fortune 500 accounts through coordinated sales and marketing motions — better suited to Marketo Engage's ABM capabilities."
+        ],
+        correctAnswer: 0,
+        category: "AJO / Marketo / Workfront"
+    },
+    // Q39 correct: B (1)
+    {
+        question: "What is 'GenStudio' in the Adobe Digital Experience portfolio?",
+        options: [
+            "GenStudio is a production scheduling and resource management platform purpose-built for professional video studios running complex, multi-brand content delivery pipelines.",
+            "GenStudio is an AI-powered platform for on-brand content creation at scale — teams generate, review, and activate campaign-ready content across channels within guardrails set by brand teams.",
+            "GenStudio is a specialised analytics dashboard measuring the downstream business performance and audience engagement impact of creative assets across paid, owned, and earned channels."
+        ],
+        correctAnswer: 1,
+        category: "AJO / Marketo / Workfront"
+    },
+    // Q40 correct: C (2)
     {
         question: "A prospect currently uses HubSpot for marketing automation and is growing quickly. What is the best argument for Marketo Engage?",
         options: [
-            "Marketo Engage is priced significantly lower than HubSpot at every commercial tier, making cost savings the primary and most compelling business case for any growing company evaluating a platform switch",
-            "HubSpot and Marketo Engage are functionally equivalent products at all scales — any migration project would consume internal resource and budget without delivering a measurable improvement in marketing output",
-            "The prospect must first consolidate their CRM environment, standardise their data model, and resolve data quality issues before a Marketo Engage deployment can be properly scoped or commercially evaluated",
-            "Marketo handles enterprise B2B complexity HubSpot wasn't built for — deeper CRM sync, advanced scoring, ABM, full Adobe Experience Cloud integration"
+            "Marketo Engage is priced significantly lower than HubSpot at every commercial tier, making cost reduction the primary business case for any growing company considering a platform switch.",
+            "The prospect should first consolidate their CRM environment, standardise their data model, and resolve data quality issues before any Marketo Engage deployment can be properly scoped.",
+            "Marketo handles enterprise B2B complexity HubSpot wasn't built for — deeper CRM synchronisation, advanced behavioural scoring, full ABM capabilities, and native Adobe Experience Cloud integration."
         ],
-        correctAnswer: 3,
+        correctAnswer: 2,
         category: "AJO / Marketo / Workfront"
     },
 
     // ── SECTION 5: Adobe Brand Visibility ────────────────────────────────────
 
-    // correct: C (2)
+    // Q41 correct: A (0)
     {
         question: "What does 'Adobe Brand Visibility' mean in the context of enterprise marketing, and why does it matter to a prospect?",
         options: [
-            "It refers to Adobe's paid advertising spend on social platforms like LinkedIn and Meta, which indirectly increases product awareness among enterprise marketing buyers.",
-            "Brand visibility is a legacy term for Adobe's print and broadcast sponsorship programme, used primarily to support events and physical trade show activations.",
-            "It describes how Adobe tools help enterprise brands publish, distribute, and govern their visual identity consistently across every channel — ensuring the brand looks right wherever a customer encounters it.",
-            "Adobe Brand Visibility is a standalone analytics product that measures share-of-voice and brand sentiment for enterprise marketing teams through third-party panel data and social listening APIs."
+            "Adobe Brand Visibility describes how Adobe tools help enterprise brands publish, distribute, and govern their visual identity consistently across every channel — ensuring the brand looks right wherever a customer encounters it.",
+            "Adobe Brand Visibility refers to Adobe's own paid advertising investment on platforms like LinkedIn and Meta, which indirectly raises product awareness among enterprise marketing decision-makers.",
+            "Adobe Brand Visibility is a standalone analytics product that measures share-of-voice and brand sentiment for enterprise teams through third-party panel data and social listening APIs."
         ],
-        correctAnswer: 2,
+        correctAnswer: 0,
         category: "Adobe Brand Visibility"
     },
-    // correct: C (2)
+    // Q42 correct: B (1)
     {
         question: "A global retail brand says: 'Our regional teams keep going off-brand — wrong logos, wrong colours, outdated assets.' Which Adobe solution most directly solves this brand visibility problem?",
         options: [
-            "Adobe Analytics, which tracks brand asset usage across regional web properties and flags pages where outdated logo variants or incorrect hex colour values have been detected in live content.",
-            "Adobe Journey Optimizer, which sends automated push notifications to regional marketing managers whenever their published content deviates from centrally defined brand guidelines.",
-            "AEM Assets Content Hub — approved, on-brand assets in one governed portal with self-service access for regional teams, so only the latest correct versions ever go live.",
-            "Adobe Target, which suppresses off-brand asset variants through A/B testing and automatically surfaces the highest-performing on-brand version to each regional audience segment."
-        ],
-        correctAnswer: 2,
-        category: "Adobe Brand Visibility"
-    },
-    // correct: C (2)
-    {
-        question: "How does Adobe GenStudio support brand visibility at scale for enterprise marketing teams?",
-        options: [
-            "GenStudio replaces the need for a DAM entirely — it generates net-new brand assets on demand using AI, making it unnecessary for teams to store, govern, or distribute approved creative files.",
-            "It is a project management layer for creative teams, handling briefs, approvals, and timelines but not directly involved in content creation or brand asset generation.",
-            "GenStudio enables on-brand content generation at scale — AI creates campaign-ready content within brand guardrails (approved colours, fonts, tone), reviewed and activated directly into channels.",
-            "GenStudio is designed exclusively for Fortune 500 brands with in-house studios — it is not applicable to mid-market organisations that rely on agency partners for content production."
-        ],
-        correctAnswer: 2,
-        category: "Adobe Brand Visibility"
-    },
-    // correct: B (1)
-    {
-        question: "A prospect asks: 'How does Adobe help us maintain brand consistency when we're publishing content across our website, mobile app, email campaigns, and partner portals simultaneously?' What is the strongest answer?",
-        options: [
-            "Adobe recommends maintaining separate best-of-breed tools for each channel, since no single platform can govern brand consistency across web, mobile, email, and partner environments simultaneously.",
-            "AEM Sites headless CMS delivers content from one governed source via API to every channel — same approved brand content, same assets, every surface, with no re-publishing required.",
-            "Adobe Express allows each channel team to independently rebuild brand-compliant assets using locked templates, which are then manually transferred to each publishing environment by a central ops team.",
-            "Adobe Campaign centralises brand asset governance by acting as the master publishing layer for all channels, routing final approved content to the website, mobile app, and partner portals through a single workflow."
+            "Adobe Analytics tracks brand asset usage across regional web properties and flags pages where outdated logo variants or incorrect hex colour values have been detected in live published content.",
+            "AEM Assets Content Hub puts approved, on-brand assets in one governed self-service portal — regional teams access only the latest correct versions, eliminating off-brand publishing at the source.",
+            "Adobe Target suppresses off-brand asset variants through A/B testing and automatically surfaces the highest-performing on-brand version to each regional audience segment over time."
         ],
         correctAnswer: 1,
         category: "Adobe Brand Visibility"
     },
-    // correct: D (3)
+    // Q43 correct: C (2)
+    {
+        question: "How does Adobe GenStudio support brand visibility at scale for enterprise marketing teams?",
+        options: [
+            "GenStudio replaces the need for a DAM entirely — it generates net-new brand assets on demand using AI, making it unnecessary for teams to store, govern, or distribute pre-approved creative files.",
+            "GenStudio acts as a project management layer for creative teams, handling briefs, approvals, and production timelines but not directly involved in content creation or asset generation.",
+            "GenStudio enables on-brand content creation at scale — AI generates campaign-ready content within brand guardrails covering approved colours, fonts, and tone, then routes it for review and channel activation."
+        ],
+        correctAnswer: 2,
+        category: "Adobe Brand Visibility"
+    },
+    // Q44 correct: A (0)
+    {
+        question: "A prospect asks: 'How does Adobe help us maintain brand consistency when we're publishing content across our website, mobile app, email campaigns, and partner portals simultaneously?' What is the strongest answer?",
+        options: [
+            "AEM Sites headless CMS delivers content from one centrally governed source via API to every channel simultaneously — website, mobile, email, and partner portals all receive the same approved brand content.",
+            "Adobe Express allows each channel team to rebuild brand-compliant assets independently using locked templates, which a central operations team then manually transfers to each publishing environment.",
+            "Adobe Campaign centralises brand governance by acting as the master publishing layer, routing final approved content to the website, mobile app, and partner portals through a single coordinated workflow."
+        ],
+        correctAnswer: 0,
+        category: "Adobe Brand Visibility"
+    },
+    // Q45 correct: B (1)
     {
         question: "In a discovery call, a Creative Cloud customer mentions: 'We produce great content but by the time it reaches our regional websites and partner channels it looks nothing like what we intended.' Which Adobe value proposition directly addresses this gap?",
         options: [
-            "The prospect needs to rebuild their creative production workflow inside Adobe Workfront before any brand distribution problem can be addressed — process governance must come before technology.",
-            "Adobe Stock can fill the gap by providing regionally localised, pre-cleared brand imagery that regional teams use instead of adapting centrally produced creative, eliminating the distribution problem entirely.",
-            "Adobe Firefly can regenerate any asset in a locally appropriate style, so regional variations are produced by AI rather than manually adapted, removing the risk of brand drift in distributed markets.",
-            "AEM Assets + AEM Sites closes the loop — creative output from CC flows into a governed DAM, then publishes to every channel through a headless CMS, so what ships looks exactly like what was designed."
+            "Adobe Firefly can regenerate any asset in a locally appropriate style so regional variations are produced by AI rather than manually adapted, removing the risk of brand drift in distributed markets.",
+            "AEM Assets and AEM Sites close the loop — Creative Cloud output flows into a governed DAM, then publishes to every channel through a headless CMS, ensuring what ships looks exactly like what was designed.",
+            "Adobe Stock fills the gap by providing regionally localised, pre-cleared brand imagery that regional teams use instead of adapting centrally produced creative, eliminating the distribution problem."
         ],
-        correctAnswer: 3,
+        correctAnswer: 1,
         category: "Adobe Brand Visibility"
     }
 ];
